@@ -1,1 +1,1 @@
-# testing-with-cypress-workshop
+# Testing With Cypress Workshop
