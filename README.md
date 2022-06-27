@@ -1,10 +1,5 @@
 # Testing With Cypress Workshop
 
-
-
-
-
-
 ***
 ***
 
