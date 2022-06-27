@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Rade58/testing-with-cypress-workshop/issues"
   },
-  "homepage": "https://github.com/Rade58/testing-with-cypress-workshop#readme"
+  "homepage": "https://github.com/Rade58/testing-with-cypress-workshop#readme",
+  "dependencies": {
+    "cypress": "^10.2.0"
+  }
 }
