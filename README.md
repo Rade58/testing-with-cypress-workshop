@@ -1,9 +1,11 @@
 # Testing With Cypress Workshop
 
+work in progress
+
 ***
 ***
 
-SOME PRIVATE LINKS:
+SOME PRIVATE THINGS:
 
 [some private lessons](https://github.com/Rade58/cypress-lessons)
 
