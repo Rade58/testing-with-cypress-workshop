@@ -12,4 +12,3 @@ SOME PRIVATE THINGS:
 [some private projects](https://github.com/Rade58/react-cypress-starter)
 
 
-
