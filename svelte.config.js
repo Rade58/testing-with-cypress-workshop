@@ -16,16 +16,13 @@ const config = {
 	// 	adapter: adapter()
 	// }
 	kit: {
-		adapter: adapter(),
+		adapter: adapter()
 
-		// HERE WE CAN SET UP PATH ALIASES
-		vite() {
+		// WE MOVED THIS TO vite.config.js
+		/* vite() {
 			return {
 				resolve: {
 					alias: {
-						// LETS ADD THO ALIASES FOR
-						// ONE FOR /src/util
-						// OTHER FOR /src/components
 
 						$util: path.resolve('./src/util'),
 						$components: path.resolve('./src/components'),
@@ -33,7 +30,7 @@ const config = {
 					}
 				}
 			};
-		}
+		} */
 	}
 };
 
