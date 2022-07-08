@@ -2,6 +2,8 @@
 
 work in progress
 
+sample app in this project is bootstrapped with [svelte kit](https://kit.svelte.dev/docs/introduction)
+
 ***
 ***
 
