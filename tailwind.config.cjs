@@ -6,6 +6,9 @@ const config = {
 	theme: {
 		extend: {}
 	},
+	daisyui: {
+		themes: ['acid']
+	},
 
 	plugins: [daisyui]
 };
