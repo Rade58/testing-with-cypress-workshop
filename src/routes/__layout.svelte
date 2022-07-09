@@ -8,7 +8,7 @@
 
 	let applications = [
 
-    { name: 'Jetsetter', path: '/jetsetter', active: false },
+    { name: 'Crypto Pooper', path: '/crypto-pooper', active: false },
     { name: 'Secret Menu', path: '/secret-menu', active: false },
     { name: 'Input Obstacles', path: '/obstacle-course', active: false },
     { name: 'Echo Chamber', path: '/echo-chamber', active: false },
