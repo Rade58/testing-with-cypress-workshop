@@ -22,6 +22,7 @@ export const get: RequestHandler<any, { facts: DogFact[]; amount: number }> = as
 	const amount = searchParams.get('amount')?.toLowerCase();
 
 	// USING THIS JUST TO SEE IF THIS IS WHAT I THINK IT IS
+
 	const againAmount = params['amount']?.toLowerCase();
 
 	// WE WILL TAKE ONLY AMOUNT OF FACTS THAT IS SPECIFIED
