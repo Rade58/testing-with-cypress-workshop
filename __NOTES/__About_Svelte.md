@@ -4,4 +4,4 @@ SEE AN EXAMPLE
 
 CHECK THIS ROUTE OF OUR APP: 
 
-[src/routes/dog-facts](src/routes/dog-facts)
+[src/routes/dog-facts](../src/routes/dog-facts)
