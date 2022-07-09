@@ -64,11 +64,15 @@ TO HAVE context OF "module" -->
 
 
 <svelte:head>
-  <title>{numberOfFacts} Dog Facts</title>
+  <title>Dog Facts</title>
 </svelte:head>
 
-<h1>{numberOfFacts} Dog Facts</h1>
+<section class="max-w-xl border-0 mx-auto mt-6">
 
-
-
-
+  <h1 class="text-2xl"> Dog Facts</h1>
+  
+  <div>
+    <p>How many dog facts would you like?</p>
+  </div>
+    
+</section>
