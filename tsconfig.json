@@ -20,6 +20,7 @@
 
 		//
 		"paths": {
+			"$lib": ["src/lib"],
 			"$lib/*": ["src/lib/*"],
 			"$util/*": ["src/util/*"],
 			"$components/*": ["src/components/*"],

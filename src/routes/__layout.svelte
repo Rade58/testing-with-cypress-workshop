@@ -48,6 +48,7 @@
 <div class="navbar bg-base-100">
   <div class="flex-1">
     <span class="btn normal-case text-xl">Cypress Workshop</span>
+    <span class="inline-block ml-6">Select your apps -></span>
   </div>
   <div class="flex-none mr-8">
     <ul class="menu menu-horizontal p-0">
