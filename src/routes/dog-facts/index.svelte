@@ -32,3 +32,22 @@ TO HAVE context OF "module" -->
   }
 
 </script>
+
+
+<!-- WE ARE GOING TO USE OUR PROPS -->
+
+<script lang="ts">
+
+  // PROPS
+  export let numberOfFacts: number;
+  export let random: string;
+  export let amount: number;
+
+  console.log({numberOfFacts, random, amount})
+
+
+  // WE ARE GOING TO HIT OUR API AND FETCH DATA
+
+
+</script>
+
