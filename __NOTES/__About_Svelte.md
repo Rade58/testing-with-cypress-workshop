@@ -33,7 +33,10 @@ export const get: RequestHandler<any, { facts: DogFact[]; amount: number }> = as
 		params
 	} = event;
 
+	// THIS IS HOW I GET QUERYSTRING PARAMS
 	const amount = searchParams.get('amount')?.toLowerCase();
+
+	// USING THIS JUST TO SEE IF THIS IS WHAT I THINK IT IS
 	const againAmount = params['amount']?.toLowerCase();
 
 	// WE WILL TAKE ONLY AMOUNT OF FACTS THAT IS SPECIFIED
@@ -56,7 +59,6 @@ export const get: RequestHandler<any, { facts: DogFact[]; amount: number }> = as
 		}
 	};
 };
-
 ```
 
 **THIS IS THE PAGE WHERE WE USE `load`**
