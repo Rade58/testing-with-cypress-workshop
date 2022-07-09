@@ -7,7 +7,7 @@ sample app in this project is bootstrapped with [svelte kit](https://kit.svelte.
 ***
 ***
 
-THESE ARE MY NOTES AND EXERCISES FROM [Testing Web Apps With Cypress Workshop](https://frontendmasters.com/courses/cypress/)
+This project is basically my notes and exercise from [Testing Web Apps With Cypress Workshop](https://frontendmasters.com/courses/cypress/), but I also changed some things; they are mostly ui related because I wanted to get some experience with svelte framework before I dive into Cypress 
 
 ***
 ***
