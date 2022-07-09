@@ -16,7 +16,7 @@
     { name: 'Dog Facts', path: '/dog-facts', active: false },
   ];
 
-	const navigation: typeof applications[0][][] = []
+	const navs: typeof applications[0][][] = []
 
 	applications.reduce((prev, curr,i) => {
 		
@@ -28,14 +28,14 @@
 		}
 
 		if(i%2){
-			navigation.push([prev, curr])
+			navs.push([prev, curr])
 
 		}
 
 		return curr
 	})
 
-	console.log(navigation)
+	// $: console.log(navs)
 
 
 
@@ -49,20 +49,24 @@
   <div class="flex-1">
     <span class="btn normal-case text-xl">Cypress Workshop</span>
   </div>
-  <div class="flex-none">
+  <div class="flex-none mr-8">
     <ul class="menu menu-horizontal p-0">
-      <li><a>Item 1</a></li>
+
+			{#each navs as nav, i}
+
       <li tabindex="0">
         <a>
-          Parent
+          item {i}
           <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
         </a>
         <ul class="p-2 bg-base-100">
-          <li><a>Submenu 1</a></li>
-          <li><a>Submenu 2</a></li>
+          {#each nav as n}
+          <li class:bg-primary={n.active}><a href={n.path}>{n.name}</a></li>
+
+					{/each}
         </ul>
       </li>
-      <li><a>Item 3</a></li>
+			{/each}
     </ul>
   </div>
 </div>
