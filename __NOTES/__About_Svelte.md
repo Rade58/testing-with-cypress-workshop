@@ -209,3 +209,26 @@ TO HAVE context OF "module" -->
 </section>
 
 ```
+
+#  THERE IS A ALSO A WAY TO DISABLE SSR PER PAGE
+
+THIS IS HOW IT IS DONE
+
+```
+cat src/routes/crypto-pooper/__layout.svelte
+```
+
+```svelte
+<script context="module" lang="ts">
+  export const ssr = false;
+</script>
+
+<svelte:head>
+  <title>Crypto Coins Stuff</title>
+</svelte:head>
+
+<div id="crypto-coins-application">
+  <slot />
+</div>
+```
+
