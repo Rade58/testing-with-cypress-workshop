@@ -232,3 +232,12 @@ cat src/routes/crypto-pooper/__layout.svelte
 </div>
 ```
 
+**THIS IS A BIT CONFUSING, SINCE IN PREVIOUS SVELTE PROJECT I BUILT, THE SSR WAS EENABLED BY UING SPECIAL ADAPTER**
+
+<https://github.com/Rade58/brunch-svelte-sass/blob/main/__NOTES/0.%20Getting%20Familiar%20With%20Svelte%20And%20Svelte%20Kit.md#if-you-want-to-use-ssr-or-some-other-custom-features-you-need-to-instal-and-configure-adapters>
+
+I NEED TO LEARN MORE ABOUT MENTIONED
+
+<https://kit.svelte.dev/docs/seo#out-of-the-box>
+
+<https://kit.svelte.dev/docs/appendix#ssr>
