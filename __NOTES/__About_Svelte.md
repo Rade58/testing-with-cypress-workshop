@@ -58,3 +58,7 @@ export const get: RequestHandler<any, { facts: DogFact[]; amount: number }> = as
 };
 
 ```
+
+**THIS IS THE PAGE WHERE WE USE `load`**
+
+>> [load](https://kit.svelte.dev/docs/loading) is similar to getStaticProps or getServerSideProps in Next.js, except that load runs on both the server and the client. In the example above, if a user clicks on a link to this page the data will be fetched
