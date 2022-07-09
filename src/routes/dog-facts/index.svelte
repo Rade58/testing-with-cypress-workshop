@@ -45,9 +45,30 @@ TO HAVE context OF "module" -->
 
   console.log({numberOfFacts, random, amount})
 
+  let facts: DogFact[];
 
-  // WE ARE GOING TO HIT OUR API AND FETCH DATA
-
-
+  // FUNCTION FOR FETCHING FACTS
+  const fetchFacts = () =>
+    fetch(`/dog-facts/api?amount=${numberOfFacts}`)
+    .then((res) => {
+      return res.json()
+    })
+    .then(data => {
+      
+      console.log(data.amount)
+      
+      facts = data.facts
+    })
+    
 </script>
+
+
+<svelte:head>
+  <title>{numberOfFacts} Dog Facts</title>
+</svelte:head>
+
+<h1>{numberOfFacts} Dog Facts</h1>
+
+
+
 
