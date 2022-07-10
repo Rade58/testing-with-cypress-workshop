@@ -9,11 +9,51 @@
     removeAllCoins} from '$stores/coins'
 
   let newCoinName = "";
+
+  const addItem = (e: Event) => {
+    addCoin(newCoinName);
+    // reseting value
+    newCoinName = "";
+  }
+
 </script>
 
 <svelte:head>
   <title>Crypto-Pooper</title>
 </svelte:head>
+
+
+<form on:submit|preventDefault={addItem}>
+  <div class="w-full">
+    <label for="new-coin-input">Coin</label>
+    <input
+      type="text" 
+      placeholder="New Coin"
+      data-test="new-coin-input"
+      bind:value={newCoinName}
+      required
+      id="new-coin-input"
+    />
+  </div>
+  <button
+    disabled={!newCoinName}
+  >
+    Add Item
+  </button>
+</form>
+
+<div class="mt-2 max-w-xl mx-auto">
+  <label for="filter-coins">Filter</label>
+  <br/>
+  <input
+    type="text"
+    data-test="filter-coins"
+    id="filter-coins"
+    placeholder="Filter Coins"
+    bind:value={$filterStore}
+    class="input input-bordered input-primary w-full"
+  />
+</div>
 
 <section data-test="coins" class="flex gap-3 justify-between max-w-xl mx-auto mt-9">
   <CoinList title="Legit Coins" coins={$legitCoinStore} />
