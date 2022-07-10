@@ -23,10 +23,13 @@
 </svelte:head>
 
 
-<form on:submit|preventDefault={addItem}>
+<form on:submit|preventDefault={addItem}
+  class="flex max-w-xl mx-auto mt-14"
+>
   <div class="w-full">
     <label for="new-coin-input">Coin</label>
     <input
+      class="input input-bordered input-primary"
       type="text" 
       placeholder="New Coin"
       data-test="new-coin-input"
@@ -36,7 +39,10 @@
     />
   </div>
   <button
-    disabled={!newCoinName}
+  class:btn-disabled={!newCoinName}
+  disabled={!newCoinName}
+  class="btn btn-secondary"
+    type="submit"
   >
     Add Item
   </button>
