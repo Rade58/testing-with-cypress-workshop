@@ -54,13 +54,13 @@ export const filterStore = writable('');
 
 // THIS DERIVED STORE WILL USE, OUR STORE OF COINS
 // AND STORE THAT REPRESENT FILTER STRING
-export const storeReadable = derived([store, filterStore], ([myStore, myFilterStore]) => {
+export const storeReadable = derived([store, filterStore], ([myStoreValue, myFilterStoreValue]) => {
 	// IF THERE IS NO FILTER VALUE, RETURN ORIGINAL STORE
-	if (!filterStore) return myStore;
+	if (!filterStore) return myStoreValue;
 	// RETURN FILTERED COINS, WHICH ARE FILTERED BY PROVIDED VALUE
 	// FROM filterStore
-	return myStore.filter((coin) => {
-		return coin.title.toLowerCase().startsWith(myFilterStore.toLowerCase());
+	return myStoreValue.filter((coin) => {
+		return coin.title.toLowerCase().startsWith(myFilterStoreValue.toLowerCase());
 	});
 });
 // ONE FOR ALL COINS THAT ARE SHITCOINS
