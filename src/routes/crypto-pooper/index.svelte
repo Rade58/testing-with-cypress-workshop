@@ -22,10 +22,18 @@
 
 <footer class="flex gap-2 max-w-xl mx-auto mt-9">
   <button
+    on:click={markAllAsLegitCoins}
     data-test="mark-all-as-legit"
     class="btn btn-primary"
   >
     Mark All As Legit Coins
+  </button>
+  <button
+    on:click={removeAllCoins}
+    data-test="remove-all"
+    class="btn btn-primary"
+  >
+    Remove All coins
   </button>
 </footer>
 
