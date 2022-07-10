@@ -20,8 +20,13 @@
   <CoinList title="Shitcoins" coins={$shitcoinsStore} />
 </section>
 
-<footer>
-
+<footer class="flex gap-2 max-w-xl mx-auto mt-9">
+  <button
+    data-test="mark-all-as-legit"
+    class="btn btn-primary"
+  >
+    Mark All As Legit Coins
+  </button>
 </footer>
 
 

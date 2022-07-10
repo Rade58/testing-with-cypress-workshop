@@ -17,12 +17,14 @@
     {:else}
       {#each coins as coin (coin.id)}
         <li class="my-2">
+          <input
+          type="checkbox"
+          id="coin-{coin.id}"
+          checked={coin.shitcoin}
+          on:change={() => toggle(coin.id)}
+          />
           <label for="coin-{coin.id}">
-            <input
-              type="checkbox"
-              id="coin-{coin.id}"
-              checked={coin.shitcoin} 
-            />
+            {coin.title}
           </label>
           <button
             data-test="remove"
