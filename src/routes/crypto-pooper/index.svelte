@@ -3,7 +3,7 @@
   import {
     legitCoinStore,
     shitcoinsStore,
-    filterDerivateStore,
+    filterStore,
     addCoin,
     markAllAsLegitCoins,
     removeAllCoins} from '$stores/coins'

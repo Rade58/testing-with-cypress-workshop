@@ -44,17 +44,21 @@ export const markAllAsLegitCoins = () => {
 export const removeAllCoins = () => store.set([]);
 
 // SECOND ARGUMENT WHEN MAKING DERIVED STORE
-export const filterDerivateStore = writable('');
+// THIS IS JUST THE STROR WHICH VALUE IS STRING
+export const filterStore = writable('');
 
 // DON'T EVER FORGET THTAT AS "MAIN" STORE DATA
 // CHANGES `THE DERIVED STORE STATE WILL ALSO CHANGE`
 
 // WE WILLL HAVE THREE STORES
 
-// ONE THAT IS THE SAME AS ORIGINAL
-// BUT WE WANT IT TO BE READABLE STORE
-export const storeReadable = derived([store, filterDerivateStore], ([myStore, myFilterStore]) => {
-	if (!filterDerivateStore) return myStore;
+// THIS DERIVED STORE WILL USE, OUR STORE OF COINS
+// AND STORE THAT REPRESENT FILTER STRING
+export const storeReadable = derived([store, filterStore], ([myStore, myFilterStore]) => {
+	// IF THERE IS NO FILTER VALUE, RETURN ORIGINAL STORE
+	if (!filterStore) return myStore;
+	// RETURN FILTERED COINS, WHICH ARE FILTERED BY PROVIDED VALUE
+	// FROM filterStore
 	return myStore.filter((coin) => {
 		return coin.title.toLowerCase().startsWith(myFilterStore.toLowerCase());
 	});
