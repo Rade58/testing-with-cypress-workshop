@@ -46,6 +46,9 @@ export const removeAllCoins = () => store.set([]);
 // SECOND ARGUMENT WHEN MAKING DERIVED STORE
 export const filterDerivateStore = writable('');
 
+// DON'T EVER FORGET THTAT AS "MAIN" STORE DATA
+// CHANGES `THE DERIVED STORE STATE WILL ALSO CHANGE`
+
 // WE WILLL HAVE THREE STORES
 
 // ONE THAT IS THE SAME AS ORIGINAL

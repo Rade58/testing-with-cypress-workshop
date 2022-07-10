@@ -11,12 +11,12 @@
   <ul>
     {#if !coins || coins.length ===0}
     <p data-test="coins-empty-state" 
-    class="font-light text-purple-600">
-      No items to show.
+    class="font-light text-amber-500">
+      No coins to show.
     </p>
     {:else}
       {#each coins as coin (coin.id)}
-        <li>
+        <li class="my-2">
           <label for="coin-{coin.id}">
             <input
               type="checkbox"
@@ -26,7 +26,7 @@
           </label>
           <button
             data-test="remove"
-            class="btn btn-sm btn-primary"
+            class="btn btn-xs btn-primary"
             on:click={() => removeCoin(coin.id)}
           >
             Remove

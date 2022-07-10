@@ -15,7 +15,7 @@
   <title>Crypto-Pooper</title>
 </svelte:head>
 
-<section data-test="coins">
+<section data-test="coins" class="flex gap-3 justify-between max-w-xl mx-auto mt-9">
   <CoinList title="Legit Coins" coins={$legitCoinStore} />
   <CoinList title="Shitcoins" coins={$shitcoinsStore} />
 </section>
