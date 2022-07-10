@@ -5,11 +5,12 @@
   import {toast} from '@zerodevx/svelte-toast'
 
   onMount(() => {
+    console.log("Index page mounted")
+
     setTimeout(() => {
       toast.push("Hello goblin, How are you");
       console.log("You are a goblin")
-    }, 10000)
+    }, 1000)
   })
 
 </script>
-
