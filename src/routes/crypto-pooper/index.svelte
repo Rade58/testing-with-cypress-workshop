@@ -10,7 +10,7 @@
 
   let newCoinName = "";
 
-  const addItem = (e: Event) => {
+  const addNewCoin = (e: Event) => {
     addCoin(newCoinName);
     // reseting value
     newCoinName = "";
@@ -23,7 +23,7 @@
 </svelte:head>
 
 
-<form on:submit|preventDefault={addItem}
+<form on:submit|preventDefault={addNewCoin}
   class="flex max-w-xl mx-auto mt-14"
 >
   <div class="w-full">
