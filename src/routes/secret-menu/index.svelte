@@ -1,8 +1,15 @@
 <script context="module" lang="ts">
   import type {Load} from '@sveltejs/kit'
-  export const ssr = false;
+  
+  // https://github.com/sveltejs/kit/pull/2804#issuecomment-1009737824
+  // THIS IS DEPRECATED
+  // export const ssr = false;
+  // WE MADE A HOOK LIKE THIS
+  // https://kit.svelte.dev/docs/hooks#handle
+  // CHECK 
+  //              src/hooks.ts
 
-  export const load: Load = async({fetch}) => {
+  export const load: Load = async({fetch }) => {
 
     const {data}: SecretMenuItemAPIResponseType = 
       await fetch("/secret-menu/api")
@@ -117,9 +124,12 @@
   class="flex gap-6 my-4 mx-10"
 >
   <section id="rating-visibility">
-    <label for="minimum-rating-visibility">
+    <label for="minimum-rating-visibility"
+      class="text-primary"
+    >
       Minimum Rating: {minimumRating}
     </label>
+
     <input type="range" id="minimum-rating-visibility"
       min="1"
       max="7"
@@ -136,6 +146,22 @@
       <span>|</span>
       <span>|</span>
     </div>
+  </section>
+
+  <section id="restaurant-visibility">
+    <label for="restaurant-visibility-filter" class="block text-primary">
+      Restaurant
+    </label>
+    <select id="restaurant-visibility-filter"
+      bind:value={restaurant}
+      class="block select select-secondary"
+    >
+    <option disabled>Select Restaurant</option>
+    <option value={null} selected>All</option>
+      {#each restaurants as r}
+        <option value={r}>{r}</option>
+      {/each}
+    </select>
   </section>
 
 </div>

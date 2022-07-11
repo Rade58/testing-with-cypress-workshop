@@ -210,7 +210,7 @@ TO HAVE context OF "module" -->
 
 ```
 
-#  THERE IS A ALSO A WAY TO DISABLE SSR PER PAGE
+#  THERE IS A ALSO A WAY TO DISABLE SSR PER PAGE (THIS IS DEPRECATED, CHECK NEXT HEADING)
 
 THIS IS HOW IT IS DONE
 
@@ -241,3 +241,51 @@ I NEED TO LEARN MORE ABOUT MENTIONED
 <https://kit.svelte.dev/docs/seo#out-of-the-box>
 
 <https://kit.svelte.dev/docs/appendix#ssr>
+
+# DISABLE SSR PER PAGE IN SVELTE
+
+```ts
+// THIS IS DEPRECATED
+export const ssr = false;
+```
+
+YOU NEED A HOOK INSTEAD
+
+SEE THIS
+
+```
+cat src/hooks.ts
+```
+
+```ts
+import type { Handle } from '@sveltejs/kit';
+
+export const handle: Handle = async function ({ event, resolve }) {
+	const {
+		// request,
+		url: { pathname }
+	} = event;
+
+	const response = await resolve(event, {
+		// SSR enabled for every page except   /secret-menu
+		ssr: !pathname.startsWith('/secret-menu')
+	});
+
+	return response;
+};
+
+```
+
+FOR MORE INFO READ THIS:
+
+<https://kit.svelte.dev/docs/seo#out-of-the-box-ssr>
+
+BUT THIS WAS REALLY HELPFUL
+
+<https://github.com/sveltejs/kit/discussions/4309>
+
+ESPECIALLY THIS
+
+<https://github.com/sveltejs/kit/pull/2804#issuecomment-1009737824>
+
+
