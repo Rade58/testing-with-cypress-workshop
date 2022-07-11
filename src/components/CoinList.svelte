@@ -16,19 +16,20 @@
     </p>
     {:else}
       {#each coins as coin (coin.id)}
-        <li class="my-2">
+        <li class="my-2 flex">
           <input
           type="checkbox"
           id="coin-{coin.id}"
           checked={coin.shitcoin}
           on:change={() => toggle(coin.id)}
+          class="mr-2"
           />
-          <label for="coin-{coin.id}">
+          <label for="coin-{coin.id}" class="mr-4">
             {coin.title}
           </label>
           <button
             data-test="remove"
-            class="btn btn-xs btn-primary"
+            class="btn btn-xs btn-ghost ml-auto"
             on:click={() => removeCoin(coin.id)}
           >
             Remove

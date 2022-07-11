@@ -51,7 +51,7 @@
   </button>
 </form>
 
-<div class="mt-2 max-w-xl mx-auto">
+<div class="mt-6 max-w-xl mx-auto">
   <label for="filter-coins">Filter</label>
   <br/>
   <input
