@@ -8,10 +8,7 @@
 
 	import '../app.css';
 
-
-
 	let applications = [
-
     { name: 'Crypto Pooper', path: '/crypto-pooper', active: false },
     { name: 'Secret Menu', path: '/secret-menu', active: false },
     { name: 'Input Obstacles', path: '/obstacle-course', active: false },
@@ -19,41 +16,8 @@
     { name: 'Pokémon Search', path: '/pokemon-search', active: false },
     { name: 'Dog Facts', path: '/dog-facts', active: false },
   ];
-
-  let navs: typeof applications[0][][] = []
   
-  $: {
-  
-    applications.reduce((prev, curr,i) => {
-      
-      if($page.url.pathname === prev.path){
-        prev.active = true;
-      }
-      if($page.url.pathname === curr.path){
-        curr.active = true;
-      }
-
-      if(i%2){
-        navs.push([prev, curr])
-
-      }
-      
-      return curr
-    })
-  }
-  
-	// $: console.log(navs)
-  $: console.log(applications)
-
-  $: console.log({navs})
-
-  onMount(() => {
-    console.log("Main Layout remounts")
-  })
-
-
-  $: console.log({path: $page.url.pathname})
-
+  // WE NEED TO LOOP OVER ARRAY TO CHANGE     active    VALUE
 
 
 </script>
