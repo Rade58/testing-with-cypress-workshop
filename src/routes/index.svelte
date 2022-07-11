@@ -10,7 +10,7 @@
     setTimeout(() => {
       toast.push("Hello goblin, How are you");
       console.log("You are a goblin")
-    }, 1000)
+    }, 10000)
   })
 
 </script>
