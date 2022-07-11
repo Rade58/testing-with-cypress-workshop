@@ -39,12 +39,14 @@
     />
   </div>
   <button
-  class:btn-disabled={!newCoinName}
-  disabled={!newCoinName}
-  class="btn btn-secondary"
+    class:btn-disabled={!newCoinName}
+    disabled={!newCoinName}
+    class="btn btn-secondary"
     type="submit"
+    id="add-coin"
+    data-test="add-coin"
   >
-    Add Item
+    Add Coin
   </button>
 </form>
 
