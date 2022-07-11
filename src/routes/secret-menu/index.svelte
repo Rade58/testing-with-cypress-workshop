@@ -48,4 +48,47 @@
 
   const ratings = [1, 2, 3, 4, 5, 6, 7] as const;
 
+  let restaurant: typeof restaurants[number] | null = null
+
+  let minimumRating: typeof ratings[number] = 1
+
+  // STATE FOR CHECKBOXES
+  let name = true;
+  let whereToOrder = true;
+  let description = true;
+  let secret = true;
+  let ingredients = true;
+  let popularity = true;
+  let price = true;
+  let howToOrder = true;
+
+
+  // THIS IS "STATE VALUE" THAT WILL DETERMINE 
+  // WHICH RESTAUTANTS ARE GOING TO DISPLAY DATA
+  $: visibleItems = data.filter(info => {
+    if(restaurant && info.whereToOrder !== restaurant) return false;
+    // NO IDEA WHY IS UNARY OPERATOR PLACED HERE
+    // BECAUSE minimumRating IS ALWAYS NUMBER, ATLEAST I THINK THAT
+    if(info.popularity < +minimumRating) return false;
+    return true;
+  });
+
+  // THIS SUPOSED TO BE A VALID DATA THAT CAN BE WRITTEN INTO
+  // .scv FILE 
+  $: asCSV = encodeURI(
+    "data:text/csv;charset=utf-8" + 
+    visibleItems.map(item => {
+      // EVERY PROPERTY VALUE IS
+      // DEVIDED BY COMMAS AND
+      // CONCATNATED INTO ONE STRING
+      return Object.values(item).join(',')
+    })
+    // every item is devided by new line and concatanted
+    // into one big string 
+  )
+
+
+
 </script>
+
+

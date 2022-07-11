@@ -7,8 +7,8 @@ type SecretMenuItemType = {
 	availability: string;
 	secret: string;
 	ingredients: string;
-	popularity: string;
-	price: number;
+	popularity: number;
+	price: string;
 	howToOrder: string;
 };
 
