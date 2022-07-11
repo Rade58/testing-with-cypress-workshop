@@ -1,5 +1,9 @@
 <script lang="ts">
 
+  import {onMount} from 'svelte'
+
+  // THIS IS A STORE, SO WE CAN STYLE CURRENT PAGE LINK
+  // IN RELATION TO THIS
 	import {page} from '$app/stores'
 
 	import '../app.css';
@@ -16,26 +20,39 @@
     { name: 'Dog Facts', path: '/dog-facts', active: false },
   ];
 
-	const navs: typeof applications[0][][] = []
+  let navs: typeof applications[0][][] = []
+  
+  $: {
+  
+    applications.reduce((prev, curr,i) => {
+      
+      if($page.url.pathname === prev.path){
+        prev.active = true;
+      }
+      if($page.url.pathname === curr.path){
+        curr.active = true;
+      }
 
-	applications.reduce((prev, curr,i) => {
-		
-		if($page.url.pathname === prev.path){
-			prev.active = true;
-		}
-		if($page.url.pathname === curr.path){
-			curr.active = true;
-		}
+      if(i%2){
+        navs.push([prev, curr])
 
-		if(i%2){
-			navs.push([prev, curr])
-
-		}
-
-		return curr
-	})
-
+      }
+      
+      return curr
+    })
+  }
+  
 	// $: console.log(navs)
+  $: console.log(applications)
+
+  $: console.log({navs})
+
+  onMount(() => {
+    console.log("Main Layout remounts")
+  })
+
+
+  $: console.log({path: $page.url.pathname})
 
 
 
