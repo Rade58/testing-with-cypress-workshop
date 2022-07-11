@@ -24,10 +24,11 @@
 
 
 <form on:submit|preventDefault={addNewCoin}
-  class="flex max-w-xl mx-auto mt-14"
+  class="flex max-w-xl mx-auto mt-14 items-end"
 >
   <div class="w-full">
     <label for="new-coin-input">Coin</label>
+    <br />
     <input
       class="input input-bordered input-primary"
       type="text" 
