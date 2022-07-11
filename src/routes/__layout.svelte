@@ -49,7 +49,7 @@
 
     const {url: {pathname}} = $page
 
-    console.log({pathname})
+    // console.log({pathname})
 
     navs = navs.map(group => {
 
