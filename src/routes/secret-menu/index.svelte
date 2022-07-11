@@ -84,7 +84,8 @@
       return Object.values(item).join(',')
     })
     // every item is devided by new line and concatanted
-    // into one big string 
+    // into one big string
+    .join('\n')
   )
 
 
