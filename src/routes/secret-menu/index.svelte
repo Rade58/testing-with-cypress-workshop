@@ -74,7 +74,11 @@
   });
 
   // THIS SUPOSED TO BE A VALID DATA THAT CAN BE WRITTEN INTO
-  // .scv FILE 
+  // .scv FILE
+  // SO WHEN YOU HIT THIS URI
+  // DOWNLOAD MENU (("SAVE AS" MENU SHOULD BE OPENED))
+  // THIS WILL WORK IF YOU USE download ATTRIBUTE ON 
+  // a TAG
   $: asCSV = encodeURI(
     "data:text/csv;charset=utf-8" + 
     visibleItems.map(item => {
@@ -88,8 +92,53 @@
     .join('\n')
   )
 
-
-
 </script>
 
+<svelte:head>
+  <title>Secret Menu Items</title>
+</svelte:head>
 
+<header class="mx-10 my-12">
+  <!-- DOWNLOAD LINK -->
+  <h1 class="text-base">
+    Secret Menu Items (<a
+      href={asCSV}
+      download="secret-menu-items"
+      data-test="download=link"
+      class="linkk link-primary"
+    >Download</a>)
+  </h1>
+</header>
+
+
+<!-- FORM CONTROLS -->
+
+<div
+  class="flex gap-6 my-4 mx-10"
+>
+  <section id="rating-visibility">
+    <label for="minimum-rating-visibility">
+      Minimum Rating: {minimumRating}
+    </label>
+    <input type="range" id="minimum-rating-visibility"
+      min="1"
+      max="7"
+      class="block range range-secondary"
+      bind:value={minimumRating}
+      step="1"
+    />
+    <div class="w-full flex justify-between text-xs px-2">
+      <span>|</span>
+      <span>|</span>
+      <span>|</span>
+      <span>|</span>
+      <span>|</span>
+      <span>|</span>
+      <span>|</span>
+    </div>
+  </section>
+
+</div>
+
+
+<!-- TABLE -->

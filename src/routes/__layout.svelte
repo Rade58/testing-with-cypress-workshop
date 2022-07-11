@@ -79,7 +79,7 @@
 
 
 
-<div class="navbar bg-base-100">
+<div class="navbar bg-base-100 sticky top-0">
   <div class="flex-1">
     <a href="/" class="btn normal-case text-xl">Cypress Workshop</a>
     <span class="inline-block ml-6">Select your apps -></span>
