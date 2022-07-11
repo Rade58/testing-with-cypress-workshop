@@ -13,5 +13,5 @@ type SecretMenuItemType = {
 };
 
 type SecretMenuItemAPIResponseType = {
-	data: SecretMenuItemAPIResponseType[];
+	data: SecretMenuItemType[];
 };
