@@ -24,4 +24,28 @@
 
   export let data: SecretMenuItemType[] = []
 
+
+  const restaurants = [
+    'Chick-fil-A',
+    'McDonalds',
+    'In-N-Out',
+    'KFC',
+    'Jack In The Box',
+    'Jamba Juice',
+    'Starbucks',
+    'Dairy Queen',
+    'Burger King',
+    'Chipotle',
+    'Taco Bell',
+    'Five Guys',
+    'Sonic',
+    'Subway',
+    'Panera Bread',
+    // THIS WILL SECURE THAT TYPE ISN'T  string[]
+    // IT IS GOING TO BE A ARRAY OF SPECIFIC STRINGS
+    // YOU DEFINED
+  ] as const;
+
+  
+
 </script>
