@@ -18,6 +18,8 @@
 		"strict": true,
 		"baseUrl": ".",
 
+		"noErrorTruncation": true,
+
 		//
 		"paths": {
 			"$lib": ["src/lib"],
