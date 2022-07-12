@@ -10,13 +10,13 @@ export const get: RequestHandler = async ({ params }) => {
 		if (pokemon.id === +id) {
 			return {
 				body: {
-					pokemon
+					pokemons: [pokemon]
 				}
 			};
 		}
 	}
 
 	return {
-		status: 404
+		pokemons: []
 	};
 };

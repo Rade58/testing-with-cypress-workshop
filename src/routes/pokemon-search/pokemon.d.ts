@@ -43,4 +43,4 @@ type PokemonType = {
 	id: number;
 };
 
-type PokemonAPIResponseType = { pokemon: PokemonType[] };
+type PokemonSingleItemResponseType = { pokemon: PokemonType[] };
