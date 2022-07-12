@@ -124,7 +124,7 @@
 <div
   class="flex gap-6 my-4 mx-10"
 >
-  <section id="rating-visibility">
+  <section id="rating-visibility" class="z-1">
     <label for="minimum-rating-visibility"
       class="text-primary"
     >
