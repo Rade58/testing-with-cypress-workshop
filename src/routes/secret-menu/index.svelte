@@ -59,7 +59,8 @@
 
   let minimumRating: typeof ratings[number] = 1
 
-  // STATE FOR CHECKBOXES
+
+  // STATE FOR CHECKBOXES (FOR SHOWING CERTAIN COLUMN OR NOT)
   let name = true;
   let whereToOrder = true;
   let description = true;
@@ -148,7 +149,7 @@
     </div>
   </section>
 
-  <section id="restaurant-visibility">
+  <section id="restaurant-visibility" class="ml-8">
     <label for="restaurant-visibility-filter" class="block text-primary">
       Restaurant
     </label>
@@ -164,7 +165,256 @@
     </select>
   </section>
 
+  <section id="column-visibility"
+    class="max-w-xl ml-8"
+  >
+    <h2 class="text-primary">Show Columns</h2>
+    <div class="flex gap-2 flex-wrap">
+      <div class="form-control">
+        <label for="show-name" class="cursor-pointer label" >
+          <input 
+            id="show-name" 
+            bind:checked={name}
+            type="checkbox"
+            class="checkbox checkbox-secondary"
+            name="column-visibility"
+          />
+          <span class="inline-block label-text ml-2">Name</span>
+        </label>
+      </div>
+      <div class="form-control">
+        <label for="show-whereToOrder" class="cursor-pointer label" >
+          <input 
+            id="show-whereToOrder" 
+            bind:checked={whereToOrder}
+            type="checkbox"
+            class="checkbox checkbox-secondary"
+            name="column-visibility"
+          />
+          <span class="inline-block label-text ml-2">Where To Order</span>
+        </label>
+      </div>
+      <div class="form-control">
+        <label for="show-description" class="cursor-pointer label" >
+          <input 
+            id="show-description" 
+            bind:checked={description}
+            type="checkbox"
+            class="checkbox checkbox-secondary"
+            name="column-visibility"
+          />
+          <span class="inline-block label-text ml-2">Description</span>
+        </label>
+      </div>
+      <div class="form-control">
+        <label for="show-secret" class="cursor-pointer label" >
+          <input 
+            id="show-secret" 
+            bind:checked={secret}
+            type="checkbox"
+            class="checkbox checkbox-secondary"
+            name="column-visibility"
+          />
+          <span class="inline-block label-text ml-2">Secret</span>
+        </label>
+      </div>
+      <div class="form-control">
+        <label for="show-ingredients" class="cursor-pointer label" >
+          <input 
+            id="show-ingredients" 
+            bind:checked={ingredients}
+            type="checkbox"
+            class="checkbox checkbox-secondary"
+            name="column-visibility"
+          />
+          <span class="inline-block label-text ml-2">Ingredients</span>
+        </label>
+      </div>
+      <div class="form-control">
+        <label for="show-popularity" class="cursor-pointer label" >
+          <input 
+            id="show-popularity" 
+            bind:checked={popularity}
+            type="checkbox"
+            class="checkbox checkbox-secondary"
+            name="column-visibility"
+          />
+          <span class="inline-block label-text ml-2">Popularity</span>
+        </label>
+      </div>
+      <div class="form-control">
+        <label for="show-price" class="cursor-pointer label" >
+          <input 
+            id="show-price" 
+            bind:checked={price}
+            type="checkbox"
+            class="checkbox checkbox-secondary"
+            name="column-visibility"
+          />
+          <span class="inline-block label-text ml-2">Price</span>
+        </label>
+      </div>
+      <div class="form-control">
+        <label for="show-howToOrder" class="cursor-pointer label" >
+          <input 
+            id="show-howToOrder" 
+            bind:checked={howToOrder}
+            type="checkbox"
+            class="checkbox checkbox-secondary"
+            name="column-visibility"
+          />
+          <span class="inline-block label-text ml-2">How To Order</span>
+        </label>
+      </div>
+    </div>
+  </section>
+
 </div>
 
 
 <!-- TABLE -->
+
+<div class="overflow-x-auto"
+>
+  <table class="table table-compact w-full">
+    <thead>
+      <tr>
+        <th id="name-column" class:hidden={!name}>Name</th> 
+        <th id="whereToOrder-column" class:hidden={!whereToOrder}>Where To Order</th> 
+        <th id="description-column" class:hidden={!description}>Description</th> 
+        <th id="secret-column" class:hidden={!secret}>Secret</th> 
+        <th id="ingredients-column" class:hidden={!ingredients}>Ingredients</th> 
+        <th id="popularity-column" class:hidden={!popularity}>Popularity</th> 
+        <th id="price-column" class:hidden={!price}>Price</th> 
+        <th id="howToOrder-column" class:hidden={!howToOrder}>How To Order</th> 
+        
+      </tr>
+    </thead> 
+    <tbody>
+
+      {#each visibleItems as item}
+
+        <tr>
+          <td 
+            headers="name-column"
+            class="name"
+            class:hidden={!name}
+          >
+            <a href={item.sourceUrl} class="link link-primary"
+              target="_blank"
+            >
+              {item.name}
+            </a>
+          </td>
+          <td 
+            headers="whereToOrder-column"
+            class="whereToOrder"
+            class:hidden={!whereToOrder}
+          >
+              {item.whereToOrder} 
+          </td> 
+          <td 
+            headers="description-column"
+            class="description"
+            class:hidden={!description}
+          >
+              {item.name} 
+          </td> 
+          <td 
+            headers="secret-column"
+            class="secret"
+            class:hidden={!secret}
+          >
+              {item.secret} 
+          </td> 
+          <td 
+            headers="ingredients-column"
+            class="ingredients"
+            class:hidden={!ingredients}
+          >
+              {item.ingredients} 
+          </td>
+          <td 
+            headers="popularity-column"
+            class="popularity"
+            class:hidden={!popularity}
+          >
+              {item.popularity} 
+          </td>
+          <td 
+            headers="price-column"
+            class="price"
+            class:hidden={!price}
+          >
+              {item.price} 
+          </td>
+          <td 
+            headers="howToOrder-column"
+            class="howToOrder"
+            class:hidden={!howToOrder}
+          >
+              {item.howToOrder} 
+          </td> 
+        </tr>
+          
+      {/each}
+      
+    </tbody> 
+    <!-- <tfoot>
+      <tr>
+        <th></th> 
+        <th>Name</th> 
+        <th>Job</th> 
+        <th>company</th> 
+        <th>location</th> 
+        <th>Last Login</th> 
+        <th>Favorite Color</th>
+      </tr>
+    </tfoot> -->
+  </table>  
+
+</div>
+
+
+<footer class="my-6">
+  (<a
+    href="https://github.com/ali-ce/datasets/blob/master/Hack-the-menu-scrape/Secret%20Menu%20Items.csv"
+    >Source</a
+  >.)
+</footer>
+
+
+<style lan="scss">
+
+  table {
+
+    table-layout: fixed;
+    /* position: static !important; */
+  }
+
+  td, th {
+    /* display: flex; */
+    max-width: 128px;
+    /* text-overflow: ellipsis; */
+    /* overflow-y: scroll; */
+    /* word-wrap: wrap; */
+    /* border-right: 2px crimson solid; */
+    /* border-left: 2px crimson solid; */
+    /* text-wrap:normal; */
+    word-wrap:break-all !important;
+    /* padding: 2px; */
+    white-space: normal !important;
+  }
+  
+  td {
+    height: 120px;
+    
+  }
+
+  /* th {
+    position: sticky;
+    top: 120px;
+  } */
+
+
+</style>
