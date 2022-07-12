@@ -5,5 +5,12 @@
 // WE WANT TYPE OF FIRST PARAMETER OF JSON.stringify FUNCTION
 
 export const post = (endpoint: string, data?: Parameters<typeof JSON.stringify>[0]) => {
-	return null;
+	return fetch(endpoint, {
+		method: 'POST',
+		credentials: 'include',
+		body: JSON.stringify(data || {}),
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	}).then((res) => res.json());
 };
