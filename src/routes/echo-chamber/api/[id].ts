@@ -18,6 +18,7 @@ export const del: RequestHandler = async ({ request, params }) => {
 	// WHY ORIGINAL CREATOR DIDN'T ANTICIPATED "DELETE"
 	// METHOD ABOVE, AND HE CHOOSE TO SOMEHOW MAKE
 	// A REDIRECT HERE IN CASE OF "POST" METHOD
+	// EVEN WE ARE IN DELETE HANDLER
 
 	if (request.method === 'post') {
 		return {
@@ -30,5 +31,49 @@ export const del: RequestHandler = async ({ request, params }) => {
 
 	return {
 		status: 200
+	};
+};
+
+// FOR GETTING THE POST
+// BUT BASED ON QUERYSTRING (WE WILL ANTICIPATE THAT TOO)
+// THIS ROUTE CAN ALSO DELETE POST TOO
+// WE WILL USE DELETE HANDLER AS MIDDLEWARE (YOU'LL SEE HOW)
+
+export const get: RequestHandler = async (event) => {
+	const {
+		url: { searchParams },
+		params
+	} = event;
+
+	if (searchParams.get('_method')?.toLowerCase() === 'delete') {
+		return del(event);
+	}
+
+	const { id } = params;
+
+	const post = await prisma.post.findUnique({
+		where: {
+			id: +id
+		},
+		include: {
+			author: {
+				select: {
+					id: true,
+					email: true
+				}
+			}
+		}
+	});
+
+	if (post) {
+		return {
+			body: {
+				post
+			}
+		};
+	}
+
+	return {
+		status: 404
 	};
 };
