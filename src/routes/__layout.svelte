@@ -15,9 +15,11 @@
     { name: 'Echo Chamber', path: '/echo-chamber', active: false },
     { name: 'Pokémon Search', path: '/pokemon-search', active: false },
     { name: 'Dog Facts', path: '/dog-facts', active: false },
+    { name: 'Stopwatch', path: '/stopwatch', active: false },
+    { name: 'Stopwatch', path: '/stopwatch', active: false },
   ];
 
-  let navs: typeof applications[0][][] = []
+  let navs: typeof applications[number][][] = []
   
   $: {
     
@@ -34,7 +36,12 @@
         }
 
         if(i%2){
-          navs.push([prev, curr])
+          if(prev.name !== curr.name){
+
+            navs.push([prev, curr])
+          }else{
+            navs.push([curr])
+          }
 
         }
       
