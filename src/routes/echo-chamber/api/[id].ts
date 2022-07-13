@@ -25,6 +25,7 @@ export const del: RequestHandler = async ({ request, params }) => {
 			headers: {
 				Location: '/echo-chamber/posts'
 			},
+			// THIS IS A See Other STATUS CODE
 			status: 303
 		};
 	}
@@ -77,3 +78,48 @@ export const get: RequestHandler = async (event) => {
 		status: 404
 	};
 };
+
+// FOR UPDATING A POST
+export const patch: RequestHandler = async ({ request, params }) => {
+	const { id } = params;
+
+	const formDataBody = await request.formData();
+	// eslint-disable-next-line
+	// @ts-ignore
+	const { content }: FormDataPostType = Object.fromEntries(formDataBody);
+
+	const post = await prisma.post.update({
+		where: {
+			id: +id
+		},
+		data: {
+			content
+		}
+	});
+
+	// AGAIN I AM DOING SOMETHING WHAT ALSO ORIGINAL CREATOR OF WORKSH
+	// DID, BUT I DON'T UNDERSTAND WHY (MAYBE I'LL FIND OUT IN FUTURE)
+
+	// HEADERS ARE HANDLED HERE (WOULDN'T BE LOGIC
+	// THAT WE HANDLED HEADERS BEFORE CREATING POST)
+
+	if (request.headers.get('accept') !== 'application/json') {
+		return {
+			headers: {
+				Location: `/echo-chamber/posts/${post.id}`
+			},
+			// THIS IS A See Other STATUS CODE
+			status: 303
+		};
+	}
+
+	// THIS IS NORMAL
+	return {
+		status: 200,
+		body: post
+	};
+};
+
+// FOR CREATING THE POST
+// IN HERE WE ARE ANTICIPATING FORM DATA
+// ALSO WE ARE HANDLING QUERYSTRING

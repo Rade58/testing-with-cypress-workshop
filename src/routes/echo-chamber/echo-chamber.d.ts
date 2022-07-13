@@ -9,3 +9,7 @@ type PostType = {
 	createdAt: string;
 	author: User;
 };
+
+type FormDataPostType = {
+	content: string;
+};
