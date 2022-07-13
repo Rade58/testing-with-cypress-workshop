@@ -123,3 +123,24 @@ export const patch: RequestHandler = async ({ request, params }) => {
 // FOR CREATING THE POST
 // IN HERE WE ARE ANTICIPATING FORM DATA
 // ALSO WE ARE HANDLING QUERYSTRING
+// AND WE ARE PATCHING OR DELITING DEPENDING ON QUERYSTRING VALUE
+
+export const post: RequestHandler = async (event) => {
+	const {
+		request,
+		url: { searchParams }
+	} = event;
+
+	// I REALLY DON'T UNDERSTAN WHY AREN'T WE CREATING POST IN HERE
+	// I CAN SEE THAT WE ARE ONLY
+	// UPDTING OR DELETING (IN "MIDDLEWARE WAY") DEPENDING ON QUERYSTRING
+
+	const _method = searchParams.get('_method')?.toLowerCase();
+
+	if (_method === 'patch') return patch(event);
+	if (_method === 'delete') return del(event);
+
+	return {
+		status: 404
+	};
+};
