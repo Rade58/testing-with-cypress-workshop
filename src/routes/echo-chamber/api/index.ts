@@ -57,11 +57,19 @@ export const post: RequestHandler = async ({ request }) => {
 		};
 	}
 
-	const decoder = new TextDecoder();
+	// ASUMING THAT DATA SENT IN REQUEST IS STRINGIFIED JSON
+	// I CAN DO LIKE THIS
+
+	/* const decoder = new TextDecoder();
 
 	const jsonStringData = decoder.decode(uint8Arr);
 
 	const data: { content: string; authorId: number } = JSON.parse(jsonStringData);
+ */
+	// OR LIKE THIS
+	const jsonData = Buffer.from(uint8Arr).toString('utf-8');
+
+	const data: { content: string; authorId: number } = JSON.parse(jsonData);
 
 	const post = await prisma.post.create({
 		data
