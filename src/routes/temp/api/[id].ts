@@ -1,4 +1,6 @@
 // JUST FOR TRYOUT PURPOSES
+// THIS IS NOT PART OF THE PROJECT
+// I JUST DID SOME TRYOUTS IN HERE
 
 import type { RequestHandler } from '@sveltejs/kit';
 
@@ -6,6 +8,9 @@ export const post: RequestHandler = async ({ request: req, params }) => {
 	const { id } = params;
 
 	const body = req.body;
+	/* return {
+		body: 'hello world'
+	}; */
 
 	if (!body) return { status: 400 };
 
