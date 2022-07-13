@@ -65,18 +65,24 @@ export const post: RequestHandler = async ({ request }) => {
 
 		/* const decoder = new TextDecoder();
 
-	const jsonStringData = decoder.decode(uint8Arr);
+		const jsonStringData = decoder.decode(uint8Arr);
 
-	const data: { content: string; authorId: number } = JSON.parse(jsonStringData);
- */
+		const data: { content: string; authorId: number } = JSON.parse(jsonStringData);
+ 		*/
 		// OR LIKE THIS
 		const jsonData = Buffer.from(uint8Arr).toString('utf-8');
+
+		console.log({ jsonData });
 
 		const data: { content: string; authorId: number } = JSON.parse(jsonData);
 
 		const post = await prisma.post.create({
-			data
+			data: {
+				content: data.content
+			}
 		});
+
+		console.log({ POST_ID: post.id });
 
 		if (request.headers.get('accept') !== 'application/json') {
 			return {
