@@ -1,4 +1,4 @@
-import type { RequestHandler, RequestEvent, RequestHandlerOutput, Server } from '@sveltejs/kit';
+import type { RequestHandler } from '@sveltejs/kit';
 
 import prisma from '$lib/prisma';
 
