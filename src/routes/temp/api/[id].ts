@@ -2,7 +2,9 @@
 
 import type { RequestHandler } from '@sveltejs/kit';
 
-export const post: RequestHandler = async ({ request: req }) => {
+export const post: RequestHandler = async ({ request: req, params }) => {
+	const { id } = params;
+
 	const body = req.body;
 
 	if (!body) return { status: 400 };
@@ -30,7 +32,8 @@ export const post: RequestHandler = async ({ request: req }) => {
 		status: 201,
 		body: {
 			dataOne,
-			dataTwo
+			dataTwo,
+			id
 		},
 		headers: {
 			'Content-Type': 'application/json'
