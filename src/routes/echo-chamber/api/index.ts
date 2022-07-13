@@ -32,8 +32,6 @@ export const get: RequestHandler = async (event) => {
 // HERE WE ARE ANTICIPTING Content-Type: "application/json"
 
 export const post: RequestHandler = async ({ request }) => {
-	//  body IS READABLE STREAM WITH UINT8ARRAY
-
 	const { body } = request;
 
 	if (!body) {
@@ -42,51 +40,93 @@ export const post: RequestHandler = async ({ request }) => {
 		};
 	}
 
-	// let content: string;
-	// let authorId: number;
+	// body SHOULD BE     ReadableStream<Uint8Array> | null
+	// BUT WE ARE GOING TO HANDLE FEW MORE CASES
+	// MAYBE SOMEONE SENDS DIFFERENT DATA TO THIS API ROUTE
 
-	const reader = body.getReader();
+	let content: string;
+	let authorId: number;
 
-	const readStreamResult = await reader.read();
+	if (body instanceof ReadableStream<Uint8Array>) {
+		const reader = body.getReader();
 
-	const uint8Arr = readStreamResult.value;
+		const readStreamResult = await reader.read();
 
-	if (!uint8Arr) {
-		return {
-			status: 400
-		};
-	}
+		const uint8Arr = readStreamResult.value;
 
-	// ASUMING THAT DATA SENT IN REQUEST IS STRINGIFIED JSON
-	// I CAN DO LIKE THIS
+		if (!uint8Arr) {
+			return {
+				status: 400
+			};
+		}
 
-	/* const decoder = new TextDecoder();
+		// ASUMING THAT DATA SENT IN REQUEST IS STRINGIFIED JSON
+		// I CAN DO LIKE THIS
+
+		/* const decoder = new TextDecoder();
 
 	const jsonStringData = decoder.decode(uint8Arr);
 
 	const data: { content: string; authorId: number } = JSON.parse(jsonStringData);
  */
-	// OR LIKE THIS
-	const jsonData = Buffer.from(uint8Arr).toString('utf-8');
+		// OR LIKE THIS
+		const jsonData = Buffer.from(uint8Arr).toString('utf-8');
 
-	const data: { content: string; authorId: number } = JSON.parse(jsonData);
+		const data: { content: string; authorId: number } = JSON.parse(jsonData);
 
-	const post = await prisma.post.create({
-		data
-	});
+		const post = await prisma.post.create({
+			data
+		});
 
-	if (request.headers.get('accept') !== 'application/json') {
+		if (request.headers.get('accept') !== 'application/json') {
+			return {
+				headers: {
+					Location: `/echo-chamber/posts/${post.id}`
+				},
+				status: 303
+			};
+		}
+
+		//var uint8array = new TextEncoder().encode("¢");
+		//var string = new TextDecoder().decode(uint8array);
+		//
 		return {
-			headers: {
-				Location: `/echo-chamber/posts/${post.id}`
-			},
-			status: 303
+			status: 201,
+			body: {
+				post
+			}
 		};
 	}
 
-	//var uint8array = new TextEncoder().encode("¢");
-	//var string = new TextDecoder().decode(uint8array);
-	//
+	// NOW TO DO THINGS SIMILAR LIKE AUTHOR OF WORKSHOP DID IT
+	// MAYBE HE DID THIS BECAUSE HE USED OLDER SVELTEKIT PACKAGE
+	// AND THAT TIME, MAYBE AT THAT TIME API WAS DIFFERENT
+	// BUT NEVER MIND, I'LL WRITE THIS OUT HERE TOO
+	if (typeof body === 'string') {
+		content = JSON.parse(body).content;
+		authorId = JSON.parse(body).authorId;
+	} else {
+		// eslint-disable-next-line
+		// @ts-ignore
+		content = body.get('content');
+		// eslint-disable-next-line
+		// @ts-ignore
+		authorId = +body.get('authorId');
+	}
+
+	const post = await prisma.post.create({
+		data: {
+			content,
+			authorId
+		}
+	});
+
+	if (!post) {
+		return {
+			status: 400
+		};
+	}
+
 	return {
 		status: 201,
 		body: {
