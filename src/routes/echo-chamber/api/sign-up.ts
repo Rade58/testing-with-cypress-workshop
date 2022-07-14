@@ -45,4 +45,42 @@ export const post: RequestHandler = async (event) => {
 		// @ts-ignore
 		password = body.get('password');
 	}
+
+	try {
+		user = await prisma.user.create({
+			data: {
+				email,
+				password
+			}
+		});
+	} catch (err) {
+		return {
+			headers: {
+				Location: `/echo-chamber/sign-up?error=A+user+already+exists+with+that+email.`
+			},
+			status: 303
+		};
+	}
+
+	if (!user) {
+		return {
+			headers: {
+				Location: `/echo-chamber/sign-up?error=No+such+user+exists.`
+			},
+			status: 303
+		};
+	}
+
+	return {
+		status: 302,
+		headers: {
+			Location: `/echo-chamber`
+		},
+		body: {
+			user: {
+				id: user.id,
+				email: user.email
+			}
+		}
+	};
 };
