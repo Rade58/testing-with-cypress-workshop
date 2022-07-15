@@ -24,7 +24,7 @@
 
     const response = await fetch(endpoint)
 
-    const {user} = session as {user: {id: string; email: string}}
+    const {user} = session
 
     if(response.ok){
       const {users} = await response.json() as {users: UserType[]}
