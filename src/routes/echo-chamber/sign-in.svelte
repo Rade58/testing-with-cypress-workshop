@@ -28,6 +28,8 @@
 </script>
 
 
+<h2 class="text-lg text-primary mt-4 ml-12">Sign in</h2>
+
 {#if error}
 <div class="alert alert-error shadow-lg">
   <div>
@@ -52,7 +54,7 @@
   <label for="password">
     Password <br/>
     <input type="password" name="password" id="password"
-    data-test="password" required 
+    data-test="sign-in-password" required 
     placeholder="Enter password" 
     class="input input-bordered input-primary w-full max-w-xs" />
   </label>
