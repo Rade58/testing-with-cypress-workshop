@@ -1,5 +1,5 @@
 import type { RequestHandler } from '@sveltejs/kit';
-import type { User } from '@prisma/client';
+// import type { User } from '@prisma/client';
 import prisma from '$lib/prisma';
 import { respond } from './_respond';
 
