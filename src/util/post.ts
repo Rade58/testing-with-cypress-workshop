@@ -4,6 +4,9 @@
 
 // WE WANT TYPE OF FIRST PARAMETER OF JSON.stringify FUNCTION
 
+// THIS IS GOING TO BE HELPER FOR SENDING "POST" NETWORK REQUEST
+// SINCE WE HANDLE A LOT OF POST REQUEST ON OUR ENDPOINTS
+
 export const post = (endpoint: string, data?: Parameters<typeof JSON.stringify>[0]) => {
 	return fetch(endpoint, {
 		method: 'POST',
