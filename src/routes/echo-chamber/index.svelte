@@ -17,4 +17,4 @@
   }
 </script>
 
-<p class="m16">Sign in or create an account.</p>
+<p class="m-16 text-md text-primary">Sign in or create an account.</p>

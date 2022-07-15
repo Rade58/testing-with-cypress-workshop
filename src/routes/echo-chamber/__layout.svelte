@@ -102,7 +102,13 @@
   </div>
   {/if}
   <div class="navbar-center">
-    <h2 data-test="application-title" class="btn btn-ghost normal-case text-xl">Echo Chamber  </h2>
+    <h2 data-test="application-title" class="btn btn-ghost normal-case text-xl">
+      <a href="/echo-chamber">
+
+        Echo Chamber  
+      </a>  
+    
+    </h2>
     <p data-test="application-blurb" style="font-size: 10px;"
       class="mx-8"
     >
