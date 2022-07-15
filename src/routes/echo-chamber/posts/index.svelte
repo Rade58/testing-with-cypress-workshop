@@ -22,7 +22,7 @@
 </script>
 
 
-<div class="flex flex-col place-items-center" data-test="post-empty-state">
+<div class="flex flex-col place-items-center mt-12" data-test="post-empty-state">
   {#if posts.length}
     <p data-test="post-empty-state-has-posts">Select a hot take.</p>
   {:else}

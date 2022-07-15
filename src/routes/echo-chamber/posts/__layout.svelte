@@ -45,3 +45,5 @@
 <script lang="ts">
   // toto create two components for creating post and previewing it
 </script>
+
+<slot />
