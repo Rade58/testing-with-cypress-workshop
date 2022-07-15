@@ -60,6 +60,11 @@
 
   const signOut = async () => {
     await post('/echo-chamber/api/sign-out')
+
+    // WE CAN USE SESSION AS WRITABLE STORE
+    // eslint-disable-next-line
+    // @ts-ignore
+    $session.user = null
   }
 
   $: signedIn = user? true : false;
