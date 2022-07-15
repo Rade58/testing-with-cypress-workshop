@@ -56,6 +56,9 @@
   // A helper for sending post requests
   import {post} from '$util/post'
 
+
+  import CreatePost from './posts/_create-post.svelte'
+
   export let user: UserType;
 
   const signOut = async () => {
@@ -148,4 +151,4 @@
 
 <slot />
 
-
+<CreatePost user={{email: "hello@email.com", id: 1}} />
