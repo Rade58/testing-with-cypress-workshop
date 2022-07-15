@@ -26,6 +26,11 @@ export function respond(userData: { errors?: any; user?: User }) {
 			'set-cookie': `jwt=${base64Value}; Path=/; HttpOnly`,
 			Location: '/echo-chamber/posts'
 		},
-		body: userData
+		body: {
+			user: {
+				id: userData.user.id,
+				email: userData.user.email
+			}
+		}
 	};
 }

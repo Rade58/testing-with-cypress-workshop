@@ -13,3 +13,11 @@ export const handle: Handle = async function ({ event, resolve }) {
 
 	return response;
 };
+
+// I GUESS FOR INSERTING USER OBJECT INTO session WE WOULD NEED TO USE
+// getSession HOOK
+// LOOK INO THIS
+// https://kit.svelte.dev/docs/hooks#getsession
+
+// MAYBE CONSULT THIS TUTORIAL:
+// https://www.youtube.com/watch?v=Bh8KScx8vV8
