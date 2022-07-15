@@ -43,7 +43,20 @@
 
 
 <script lang="ts">
+
   // toto create two components for creating post and previewing it
+  import CreatePost from './_create-post.svelte'
+
+
+  export let posts: Post[];
+  export let user: UserType;
+
 </script>
 
-<slot />
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-2">
+  <CreatePost {user} />
+  <div  class="content col-span-1 lg:col-span-2 row-span-2">
+    <slot />
+  </div>
+</div>
