@@ -11,7 +11,10 @@ export const post: RequestHandler = async (event) => {
 
 	if (!body) {
 		return {
-			status: 401
+			headers: {
+				Location: `/echo-chamber/sign-up?error=Something+is+wrong+with+body.`
+			},
+			status: 303
 		};
 	}
 

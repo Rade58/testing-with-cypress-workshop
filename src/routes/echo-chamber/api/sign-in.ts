@@ -24,7 +24,10 @@ export const post: RequestHandler = async (event) => {
 
 		if (!uint8Arr) {
 			return {
-				status: 401
+				headers: {
+					Location: '/echo-chamber/sign-in?error=Something+wrong+with+the+body.'
+				},
+				status: 303
 			};
 		}
 
