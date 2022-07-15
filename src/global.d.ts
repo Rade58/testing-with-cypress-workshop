@@ -1,5 +1,7 @@
 /// <reference types="@sveltejs/kit" />
 
+import type { Post } from '@prisma/client';
+
 // THIS I ALLOWED, POPULATE THESE INTERFACS
 // TO GET TYPE SAFTY
 declare namespace App {
@@ -13,7 +15,9 @@ declare namespace App {
 		user: UserType;
 	}
 
-	// interface Stuff {}
+	interface Stuff {
+		posts: Post[];
+	}
 }
 
 type CoinType = {
