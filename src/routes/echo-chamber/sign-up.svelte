@@ -25,6 +25,7 @@
 
 <script lang="ts">
   export let error: string;
+
 </script>
 
 
@@ -42,6 +43,7 @@
 <form on:submit action="/echo-chamber/api/sign-up" method="post"
   data-test="sign-up-form"
   class="max-w-2xl mx-auto"
+  headers=""
 >
   <label for="email" class="inline-block mb-8 mt-12">
     Email Address

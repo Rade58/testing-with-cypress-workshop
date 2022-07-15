@@ -31,8 +31,21 @@ export const post: RequestHandler = async (event) => {
 			};
 		}
 
-		const data: { email: string; password: string } = JSON.parse(
+		// THIS WON'T WORK
+		/* const data: { email: string; password: string } = JSON.parse(
 			Buffer.from(uint8Arr).toString('utf-8')
+		); */
+
+		const buff = Buffer.from(uint8Arr);
+
+		const stringData = buff.toString('utf-8');
+
+		// I DID SOMETHING LIKE THIS TO PARSE OUT DATA
+
+		// eslint-disable-next-line
+		// @ts-ignore
+		const data: { email: string; password: string } = Object.fromEntries(
+			new URLSearchParams(stringData).entries()
 		);
 
 		email = data.email;

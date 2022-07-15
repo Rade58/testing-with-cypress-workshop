@@ -7,7 +7,9 @@ import { encodeToken } from '$util/jwt';
 // HERE AS AN ARGUMENT
 // AND WE MAKE jwt COOKIE ENTRY FROM THE VALUES OF USER (FROM email AND id)
 
-export function respond(userData: { errors?: any; user?: User }) {
+export async function respond(userData: { errors?: any; user?: User }) {
+	console.log({ userData });
+
 	if (userData.errors || !userData.user) {
 		return { status: 401, userData };
 	}
