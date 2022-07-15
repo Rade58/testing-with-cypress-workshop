@@ -17,4 +17,7 @@
   }
 </script>
 
-<p class="my-16 ml-6 text-md text-primary">👆🏾 Sign in or create an account.</p>
+<p class="my-16 ml-4 text-md text-primary">
+  <span class="text-xl">
+    👆🏾
+  </span> Sign in or create an account.</p>
