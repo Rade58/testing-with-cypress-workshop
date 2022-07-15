@@ -82,8 +82,16 @@
       </label>
       <ul tabindex="0" class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
         <!-- <li><a>Homepage</a></li> -->
-        <li><a>Sign In</a></li>
-        <li><a>Sign Up</a></li>
+        <li><a
+            href="/echo-chamber/sign-in"
+            data-test="sign-in"
+            class:active={$page.url.pathname.endsWith("sign-in")}
+          >Sign In</a></li>
+        <li><a
+            href="/echo-chamber/sign-up"
+            data-test="sign-up"
+            class:active={$page.url.pathname.endsWith("sign-up")}
+          >Sign Up</a></li>
       </ul>
     </div>
   </div>
@@ -115,7 +123,12 @@
         </span>
       </li>
       <!-- <li><a>Settings</a></li> -->
-      <li><a>Logout</a></li>
+      <li>
+        <button 
+        data-test="sign-out"
+        on:click={signOut}
+        class="btn btn-secondary"
+        >Logout</button></li>
     </ul>
   </div>
   {/if}
