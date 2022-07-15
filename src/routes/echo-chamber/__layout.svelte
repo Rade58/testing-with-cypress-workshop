@@ -57,7 +57,7 @@
   import {post} from '$util/post'
 
 
-  import CreatePost from './posts/_create-post.svelte'
+  // import CreatePost from './posts/_create-post.svelte'
 
   export let user: UserType;
 
@@ -151,4 +151,4 @@
 
 <slot />
 
-<CreatePost user={{email: "hello@email.com", id: 1}} />
+<!-- <CreatePost user={{email: "hello@email.com", id: 1}} /> -->
