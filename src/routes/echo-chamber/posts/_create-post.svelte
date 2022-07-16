@@ -27,8 +27,8 @@ ARE JUST COMPONENTS I'M GOING TO IMPORT AND USE
         content, authorId
       }),
       headers: {
-        accept: "application/json",
-        "Content-Type": "application/json"
+        "accept": "application/json",
+        // "Content-Type": "application/json"
       },
       method: "POST"
     })
@@ -40,10 +40,16 @@ ARE JUST COMPONENTS I'M GOING TO IMPORT AND USE
       }
     })
     .then(data => {
+
+      console.log({data})
+
       return data?.post
     })
     .then((post) => {
-      return goto(`echo-chamber/posts/${post?.id}`)
+      if(post){
+        
+        return goto(`echo-chamber/posts/${post?.id}`)
+      }
     })
     .then(() => {
       return invalidate(endpoint)

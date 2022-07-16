@@ -78,13 +78,20 @@ export const post: RequestHandler = async ({ request }) => {
 
 		const post = await prisma.post.create({
 			data: {
-				content: data.content
+				content: data.content,
+				author: {
+					connect: {
+						id: +data.authorId
+					}
+				}
 			}
 		});
 
-		console.log({ POST_ID: post.id });
+		// console.log(request.headers.get('accept'));
 
 		if (request.headers.get('accept') !== 'application/json') {
+			console.log({ POST_ID: post.id });
+
 			return {
 				headers: {
 					Location: `/echo-chamber/posts/${post.id}`
@@ -96,10 +103,16 @@ export const post: RequestHandler = async ({ request }) => {
 		//var uint8array = new TextEncoder().encode("¢");
 		//var string = new TextDecoder().decode(uint8array);
 		//
+
+		console.log({ post });
+
 		return {
 			status: 201,
 			body: {
 				post
+			},
+			headers: {
+				'Content-Type': 'application/json'
 			}
 		};
 	}
