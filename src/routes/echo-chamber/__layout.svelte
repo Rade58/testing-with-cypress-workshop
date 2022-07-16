@@ -119,7 +119,7 @@
     </p>
   </div>
   {#if signedIn}
-  <div class="dropdown dropdown-end"
+  <div class="dropdown dropdown-end ml-auto mr-16"
     data-test="current-user"
   >
     <label tabindex="0" class="btn btn-ghost btn-circle avatar">
