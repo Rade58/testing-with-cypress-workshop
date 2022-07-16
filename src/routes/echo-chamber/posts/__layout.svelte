@@ -55,7 +55,12 @@
   import PreviewPost from './_preview-post.svelte'
 
 
-  export let posts: Post[];
+  export let posts: (Post & {
+    author: {
+        id: number;
+        email: string;
+    } | null;
+    })[];
   export let user: UserType;
 
 </script>
