@@ -53,7 +53,7 @@
           } ;
         })
 
-  $: draft = post.content;
+  let draft = post.content;
   $: isEditing = $page.url.searchParams.has("editing");
 
   const updatePost = () => {
@@ -161,6 +161,11 @@
       bind:value={draft}
       data-test="post-detail-draft-content"
     />
+    <button
+      type="submit"
+      data-test="post-detail-edit-submit"
+      class="btn btn-primary ml-2"
+    >Update</button>
   </form>
   {/if}
 </article>
