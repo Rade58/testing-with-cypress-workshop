@@ -18,8 +18,14 @@
       }
     }
 
+    ;
     if(response.ok){
-      const {posts} = await response.json() as {posts: Post[]}
+      const {posts} = await response.json() as {posts:(Post & {
+        author: {
+          id: number;
+          email: string;
+      } | null;
+      })[] }
 
       return {
         props: {
@@ -46,6 +52,7 @@
 
   // toto create two components for creating post and previewing it
   import CreatePost from './_create-post.svelte'
+  import PreviewPost from './_preview-post.svelte'
 
 
   export let posts: Post[];
@@ -59,4 +66,11 @@
   <div  class="content col-span-1 lg:col-span-2 row-span-2">
     <slot />
   </div>
+  <section id="posts" data-test="post-preview-list"
+  class="flex flex-col gap-2 max-w-2xl mx-auto"
+  >
+    {#each posts as post (post.id)}
+      <PreviewPost {post} />
+    {/each}
+  </section>
 </div>
