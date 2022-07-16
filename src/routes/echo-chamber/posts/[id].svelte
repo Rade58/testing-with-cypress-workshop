@@ -55,31 +55,47 @@
 
   let draft = post.content;
   $: isEditing = $page.url.searchParams.has("editing");
-
+      
   const updatePost = () => {
-    return fetch(`/echo-chamber/api/posts/${post.id}`, {
+    
+    // const formData = new FormData()
+
+    // formData.set("content", draft)
+
+    return fetch(`/echo-chamber/api/${post.id}`, {
       method: "PATCH",
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
+        // "Content-Type": "application/json"
+        'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: `content=${draft}`
+      // body: formData
     })
     .then(response => {
+      console.log("UPDATED")
+
       if(response.ok){
         invalidate(`/echo-chamber/api/${post.id}`)
         invalidate(`/echo-chamber/api`)
+        invalidate(`/echo-chamber/posts/${post.id}`)
+        goto(`/echo-chamber/posts/${post.id}`)
       }
     })
   }
 
   const deletePost = () => {
-    return fetch(`/echo-chamber/api/posts/${post.id}`, {
+    return fetch(`/echo-chamber/api/${post.id}`, {
       method: "DELETE",
 
     })
     .then((response) => {
+
+      console.log("DELETED")
+
       if(response.ok){
+        invalidate(`/echo-chamber/api/${post.id}`)
         invalidate(`/echo-chamber/api`);
+        invalidate(`/echo-chamber/posts/${post.id}`)
         goto('/echo-chamber/posts');
       }
     })
@@ -89,7 +105,7 @@
 </script>
 
 
-<article class="max-w-2xl mx-auto border border-info p-6 mb-4"
+<article class="max-w-2xl mt-8 mx-auto border border-info p-6 mb-4"
   id="post-detail-{post.id}"
   data-test="post-detail"
 >
@@ -124,10 +140,10 @@
         {/if}
       </div>
       <form 
-        action="/echo-chamber/posts{post.id}?_method=DELETE"
-        method="post"
         on:submit|preventDefault={deletePost}
-        ddata-test="post-detail-controls-delete-button"
+        method="post"
+        action="/echo-chamber/api/{post.id}?_method=delete"
+        data-test="post-detail-controls-delete-button"
       >
         <button class="btn btn-error" type="submit">
           Delete
@@ -149,9 +165,10 @@
   </p>
   {#if isEditing}
   <form
-    class="post-edit"
-    action="/echo-chamber/posts/{post.id}?_method=PATCH"
+    on:submit|preventDefault={updatePost}
+    action="/echo-chamber/api/{post.id}?_method=PATCH"
     method="post"
+    class="post-edit"
     data-test="post-detail-draft-content"
   >
     <input type="text"

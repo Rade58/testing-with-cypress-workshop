@@ -15,7 +15,7 @@
 
 <a 
   href="/echo-chamber/posts/{post.id}"
-  class="card h-36 card-side bg-base-100 shadow-xl" sveltekit:noscroll
+  class="ml-8 card h-36 card-side bg-base-100 shadow-xl" sveltekit:noscroll
     id="post-preview-{post.id}"
     class:active
 

@@ -66,7 +66,7 @@
 </script>
 
 
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-2">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-2 border">
   <CreatePost {user} />
   <div  class="content col-span-1 lg:col-span-2 row-span-2">
     <slot />

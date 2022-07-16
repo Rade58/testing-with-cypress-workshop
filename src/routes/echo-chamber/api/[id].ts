@@ -46,6 +46,8 @@ export const get: RequestHandler = async (event) => {
 		params
 	} = event;
 
+	console.log('getting things');
+
 	if (searchParams.get('_method')?.toLowerCase() === 'delete') {
 		return del(event);
 	}
@@ -81,6 +83,8 @@ export const get: RequestHandler = async (event) => {
 
 // FOR UPDATING A POST
 export const patch: RequestHandler = async ({ request, params }) => {
+	console.log({ params });
+
 	const { id } = params;
 
 	const formDataBody = await request.formData();
@@ -137,11 +141,15 @@ export const post: RequestHandler = async (event) => {
 		url: { searchParams }
 	} = event;
 
+	console.log({ params: JSON.stringify(event.params) });
+
 	// I REALLY DON'T UNDERSTAN WHY AREN'T WE CREATING POST IN HERE
 	// I CAN SEE THAT WE ARE ONLY
 	// UPDTING OR DELETING (IN "MIDDLEWARE WAY") DEPENDING ON QUERYSTRING
 
 	const _method = searchParams.get('_method')?.toLowerCase();
+
+	console.log({ _method });
 
 	if (_method === 'patch') return patch(event);
 	if (_method === 'delete') return del(event);
