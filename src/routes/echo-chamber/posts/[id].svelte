@@ -32,8 +32,13 @@
     }
 
     return {
-      status: response.status,
-      error: new Error(`Couldn't load ${endpoint}`)
+      // BETTER MAKE A REDIRECT HERE
+
+      // status: response.status,
+      // error: new Error(`Couldn't load ${endpoint}`)
+      status: 302,
+      redirect: "/echo-chamber/posts"
+      
     }
 
   }
