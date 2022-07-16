@@ -89,7 +89,7 @@
 </script>
 
 
-<article class="w-full flex gap-2 justify-end"
+<article class="max-w-2xl mx-auto border border-info p-6 mb-4"
   id="post-detail-{post.id}"
   data-test="post-detail"
 >
@@ -98,23 +98,26 @@
       <a href="/echo-chamber/posts"
         data-test="post-detail-back-arrow"
         sveltekit:noscroll
+        class="btn btn-info mr-12"
       >
-      &arr; Close
+      &larr; Close
       </a>
     </div>
     <div class="w-full flex gap-2 justify-end">
       <div data-test="post-detail-controls">
         {#if !isEditing}
-          <a href="btn btn-xs btn-secondary"
+          <a href="{$page.url.pathname}?editing"
             sveltekit:noscroll
             data-test="post-detail-controls-edit-button"
+            class="btn btn-primary"
           >
             Edit
           </a>
         {:else}
-          <a href="btn btn-xs btn-secondary"
+          <a href="{$page.url.pathname}"
           sveltekit:noscroll
             data-test="post-detail-controls-cancel-button"
+            class="btn btn-warning"
           >
             Cancel
           </a>
@@ -133,9 +136,9 @@
     </div>
   </header>
   <p data-test="post-detail-metadata">
-    At the exact moment of {post.createdAt}, {post.author.email}'s deepest thought was...
+    At the exact moment of {new Date(post.createdAt).toLocaleDateString("en-US")}, {post.author.email}'s deepest thought was...
   </p>
-  <p class="text-center text-3xl my-4 font-serif italic">
+  <p class="w-full text-center text-3xl my-4 font-serif italic">
     <span class="text-cyan-600">“</span>
     <span
       data-test="post-detail-content"
