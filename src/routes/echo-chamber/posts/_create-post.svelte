@@ -48,7 +48,7 @@ ARE JUST COMPONENTS I'M GOING TO IMPORT AND USE
     .then((post) => {
       if(post){
         
-        return goto(`echo-chamber/posts/${post?.id}`)
+        return goto(`/echo-chamber/posts/${post?.id}`)
       }
     })
     .then(() => {
