@@ -17,9 +17,25 @@ describe('Foo test', () => {
 		cy.get('form label:nth-of-type(2)').contains('Password');
 	});
 
-	// HERE YOU GO, IT IS PRETTY MUCH AMAZING WHAT SEMANTICS YOU CAN USE
-
 	it('parent of the element that has nested text: "Email Addresa" should have attribute "method"', () => {
 		cy.contains('Email Address').parent().should('have.attr', 'method');
+	});
+
+	it('go to dog-pooper page', () => {
+		cy.visit('http://localhost:3000/crypto-pooper');
+	});
+
+	// LETS CHECK USE find AND ALSO USR check
+
+	it('Type some text to create new coin, ant coin to be added to the list', () => {
+		// still not working
+		cy.contains('Legit Coins').parent().find('label').last().trigger('click');
+
+		cy.contains('Coin').click().type('Quant');
+
+		cy.get('button[type="submit"]#add-coin').click();
+
+		// ASSERTION
+		cy.contains('Legit Coins').parent().find('label').last().should('have.html', 'Quant');
 	});
 });
