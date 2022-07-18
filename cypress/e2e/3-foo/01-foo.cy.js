@@ -25,9 +25,10 @@ describe('Foo test', () => {
 		cy.visit('http://localhost:3000/crypto-pooper');
 	});
 
-	// LETS CHECK USE find AND ALSO USR check
+	// LETS CHECK USE check NOW APPARENTLY IT WILL WORK NOW
+	// BUT BEFORE CHECK WE WILL USE SSERTION
 
-	it('Type some text to create new coin, ant coin to be added to the list', () => {
+	it('Type some text to create new coin, ant coin to be added to the list, Move coin to shitcoins', () => {
 		// still not working
 		cy.contains('Legit Coins').parent().find('label').last().trigger('click');
 
@@ -37,5 +38,8 @@ describe('Foo test', () => {
 
 		// ASSERTION
 		cy.contains('Legit Coins').parent().find('label').last().should('have.html', 'Quant');
+
+		// BUT HERE check DID WORK
+		cy.contains('Legit Coins').parent().find('input').last().trigger('change');
 	});
 });
