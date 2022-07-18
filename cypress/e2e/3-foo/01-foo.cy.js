@@ -18,7 +18,7 @@ describe('Foo test', () => {
 
 	// NOW WE GO TO SOME OOTHER PAGE
 
-	it('fgoess to the signout page', () => {
-		cy.visit('http://localhost:3000/echo-chamber/sign-out');
+	it('fgoess to the signup page', () => {
+		cy.visit('http://localhost:3000/echo-chamber/sign-up');
 	});
 });
