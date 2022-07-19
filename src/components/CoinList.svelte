@@ -6,7 +6,7 @@
 
 </script>
 
-<section data-test="coins-{title}">
+<section data-test="coins-{title.toLowerCase().split(" ").join("-")}">
   <h1>{title}</h1>
   <ul>
     {#if !coins || coins.length ===0}
