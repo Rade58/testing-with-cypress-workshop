@@ -15,6 +15,10 @@ describe('Cryptocurrency coins app part', () => {
 	const val2 = 'Safemoon';
 
 	it('should add new coin to the list', () => {
+		// LET SEE IF WE HAVE 5 ITEMS ON LEGIT COINS ON THE START
+
+		cy.get('[data-test=coins-legit-coins] li').its('length').should('eq', 5);
+
 		cy.wait(500);
 
 		cy.get('[data-test=new-coin-input]').type(val, {
@@ -87,7 +91,12 @@ describe('Cryptocurrency coins app part', () => {
 
 		cy.get('[data-test=coins-shitcoins]').contains('No coins to show.');
 		cy.get('[data-test=coins-legit-coins]').contains('No coins to show.');
+
+		// OR WE CAN DO LIKE THIS
+
+		cy.get('[data-test=coins-shitcoins] li').should('not.exist');
+		cy.get('[data-test=coins-legit-coins] li').should('not.exist');
 	});
 
-	it('', () => {});
+	// it('', () => {});
 });
