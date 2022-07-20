@@ -56,4 +56,10 @@ describe('Secret Menu Stuff', () => {
 
     cy.get('@description-check').should('be.checked');
   });
+
+  it('should select an option from the select and verify it', () => {
+    cy.get('@filterSelect').select('Chipotle');
+
+    cy.get('@filterSelect').should('have.value', 'Chipotle');
+  });
 });
