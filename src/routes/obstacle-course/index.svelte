@@ -72,7 +72,9 @@
     </select>
   </div>
   <div class="p-2 border-2 border-primary">
-    <p>{favoriteAvenger || "No one"}</p>
+    <p
+      data-test="select-result"
+    >{favoriteAvenger || "No one"}</p>
   </div>
   <div class="p-2 border-2 border-primary">
     <h3>Toppings</h3>
@@ -156,6 +158,7 @@
       class="block range range-secondary"
       bind:value={rating}
       step="1"
+      data-test="range-input"
     />
     <div class="w-full flex justify-between text-xs px-2">
       <span>|</span>
