@@ -22,7 +22,7 @@ it('should move an individual coin from legit to shitcoins', () => {
       cy.get('@shit').contains(text).should('exist');
     });
 
-  // cy.get('@shit').find('label').last().as('f2');
+  cy.get('@shit').find('label').last().as('f2');
 
   // cy.get('[data-test=coins-legit-coins]').contains('Shiba Inu').click();
   // cy.get('[data-test=coins-shitcoins]').contains('Shiba Inu').should('exist');
