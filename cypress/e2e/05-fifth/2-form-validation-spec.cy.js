@@ -38,6 +38,26 @@ describe('Sign Up', () => {
 
     cy.get('@submit').click();
 
-    cy.get('input').should('have.length', 2);
+    cy.get('[data-test="sign-up-email"]:invalid').should('have.length', 1);
+
+    cy.get('[data-test="sign-up-email"]:invalid')
+      .invoke('prop', 'validationMessage')
+      .should('contain', "Please include an '@'");
+
+    cy.get('[data-test="sign-up-email"]:invalid')
+      .invoke('prop', 'validity')
+      .its('typeMismatch')
+      .should('be.true');
+  });
+
+  it('should require password when the email is present', () => {
+    cy.get('@email').type('hello@world.com{enter}');
+
+    cy.get('[data-test=sign-up-password]:invalid').should('have.length', 1);
+
+    cy.get('[data-test=sign-up-password]:invalid')
+      .invoke('prop', 'validity')
+      .its('valueMissing')
+      .should('be.true');
   });
 });
