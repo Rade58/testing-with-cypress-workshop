@@ -68,3 +68,34 @@ describe('Secret menu items', () => {
     });
   }
 });
+
+// ANOTHER DESCRIBE BLOCK FOR RATING FILTERS PART OF THE APP
+describe('Rating Filter', () => {
+  beforeEach(() => {
+    cy.get('#restaurant-visibility-filter').as('restaurant-filter');
+  });
+
+  for (const restaurant of restaurants) {
+    it(`should display rows that match ${restaurant} when selected`, () => {
+      cy.get('@restaurant-filter').select(restaurant);
+      cy.get('td[headers=whereToOrder-column]').should('contain', restaurant);
+    });
+  }
+});
+
+// FOR RATINGS FILTER
+describe('Ratings Filter', () => {
+  beforeEach(() => {
+    cy.get('#minimum-rating-visibility').as('rating-filter');
+  });
+
+  for (const rating of ratings) {
+    it(`should only display items with a popularity above ${rating}`, () => {
+      cy.get('@rating-filter').invoke('val', rating).trigger('change');
+
+      cy.get('td[headers=popularity-column]').each(($el) => {
+        expect(+$el.text()).to.be.gte(rating);
+      });
+    });
+  }
+});
