@@ -1,4 +1,18 @@
 /// <reference types="cypress" />
+
+// THIS MIGHT BE AN NOOP SINCE UPDATE
+// THIS MIGHT BE AN NOOP SINCE UPDATE
+// THIS MIGHT BE AN NOOP SINCE UPDATE
+// THIS MIGHT BE AN NOOP SINCE UPDATE
+// THIS MIGHT BE AN NOOP SINCE UPDATE
+// THIS MIGHT BE AN NOOP SINCE UPDATE
+// THIS MIGHT BE AN NOOP SINCE UPDATE
+// THIS MIGHT BE AN NOOP SINCE UPDATE
+// THIS MIGHT BE AN NOOP SINCE UPDATE
+// THIS MIGHT BE AN NOOP SINCE UPDATE
+// THIS MIGHT BE AN NOOP SINCE UPDATE
+// THIS MIGHT BE AN NOOP SINCE UPDATE
+
 //
 // ***********************************************************
 // This example plugins/index.js can be used to load plugins
@@ -17,14 +31,14 @@ import reset from '../../prisma/reset.cjs';
 import seed from '../../prisma/seed.cjs';
 
 const plugins: Cypress.PluginConfig = (on) => {
-	on('task', {
-		reset() {
-			return reset();
-		},
-		seed() {
-			return seed();
-		}
-	});
+  on('task', {
+    reset() {
+      return reset();
+    },
+    seed() {
+      return seed();
+    }
+  });
 };
 
 export default plugins;
