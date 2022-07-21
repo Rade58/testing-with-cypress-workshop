@@ -67,6 +67,12 @@ describe('Secret menu items', () => {
       cy.get(`#${property}-column`).should('have.class', 'hidden');
     });
   }
+
+  /* for (const property of properties) {
+    it('checking checkboxes again', () => {
+      cy.get(`#show-${property}`).click();
+    });
+  } */
 });
 
 // ANOTHER DESCRIBE BLOCK FOR RATING FILTERS PART OF THE APP
