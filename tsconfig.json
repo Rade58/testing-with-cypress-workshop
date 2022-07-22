@@ -18,9 +18,6 @@
     "strict": true,
     "baseUrl": ".",
 
-    // "noErrorTruncation": true,
-    "traceResolution": true,
-    //
     "paths": {
       "$lib": ["src/lib"],
       "$lib/*": ["src/lib/*"],
