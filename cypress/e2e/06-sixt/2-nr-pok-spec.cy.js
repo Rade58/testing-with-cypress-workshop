@@ -75,11 +75,60 @@ describe('Pokemon search', () => {
 
     // IT DOESN'T METTER WHAT WE PASS HERE
     // SINCE RESPONSE WILL ALWAYS HAVE DATA ABOVE
-    cy.get('@search').type('lol');
+    cy.get('@search').type('hello world');
 
     cy.wait('@stubbed-api');
 
     // NOW LIST SHOULD HAVE 3 DIFFERENT POKEMONS
     cy.get('[data-test="result"]').should('have.length', 3);
+  });
+
+  it('should link to the correct pokemon', () => {
+    cy.intercept('/pokemon-search/api?*', { pokemons }).as('stubbed-api');
+    cy.get('@search').type('hello world');
+    cy.wait('@stubbed-api');
+
+    cy.get('[data-test="results"] a').each(($el, index) => {
+      const { id } = pokemons[index];
+
+      expect($el.attr('href')).to.contain(`/pokemon-search/${id}`);
+    });
+  });
+
+  it('should persist the query parameter in the link to a pokemon', () => {
+    cy.intercept('/pokemon-search/api?*', { pokemons }).as('stubbed-api');
+    cy.get('@search').type('hello world');
+    cy.wait('@stubbed-api');
+
+    cy.get('[data-test="results"] a').each(($el, index) => {
+      expect($el.attr('href')).to.contain('name=hello world');
+      // expect($el.attr('href')).to.contain('name=hello+world');
+    });
+  });
+
+  // WE ARE GOING TO USE FIXTURES IN NEXT TEST
+  // FIXTURES ARE FILE WITH DATA WE WANT TO USE AS MOCK DATA
+
+  it('should bring you to the route for the correct pokemon', () => {
+    cy.intercept('/pokemon-search/api?*', { pokemons }).as('stubbed-api');
+    // FROM [id].svelte IS GOING TO BE MADE THIS NETWORK REQUEST
+    // INSTEAD OF APPROPRIATE DATA WE ARE SERVING FIXTURE
+    // IN CASE OF id === 1
+    // THE FIXTURE IS HERE:  cypress/fixtures/powerranger.json
+    // BUT YOU JUST SPECIFY FILENAME
+    cy.intercept('/pokemon-search/api/1', { fixture: 'powerranger.json' }).as('individual-api');
+
+    cy.get('@search').type('hello world', {
+      delay: 100,
+      timeout: 200
+    });
+
+    cy.wait('@stubbed-api');
+
+    cy.get('[data-test="results"] a').first().click();
+
+    cy.wait('@individual-api');
+
+    cy.location('pathname').should('contain', '/pokemon-search/1');
   });
 });
