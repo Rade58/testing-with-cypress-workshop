@@ -97,7 +97,10 @@ describe('Pokemon search', () => {
 
   it('should persist the query parameter in the link to a pokemon', () => {
     cy.intercept('/pokemon-search/api?*', { pokemons }).as('stubbed-api');
-    cy.get('@search').type('hello world');
+    cy.get('@search').type('hello world', {
+      timeout: 200,
+      delay: 100
+    });
     cy.wait('@stubbed-api');
 
     cy.get('[data-test="results"] a').each(($el, index) => {
