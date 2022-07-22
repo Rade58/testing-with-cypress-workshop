@@ -56,5 +56,14 @@ Cypress.Commands.add('getData', (attribute: string) => {
 
 Cypress.Commands.add('signIn', (user: { email: string; password: string }) => {
   cy.visit('http://localhost:3000/echo-chamber/sign-in');
-  cy.getData();
+  cy.getData('sign-in-email').type(user.email);
+  cy.getData('sign-in-password').type(user.password);
+  cy.getData('sign-in-submit').click();
+});
+
+Cypress.Commands.add('signUp', (user: { email: string; password: string }) => {
+  cy.visit('http://localhost:3000/echo-chamber/sign-up');
+  cy.getData('sign-up-email').type(user.email);
+  cy.getData('sign-up-password').type(user.password);
+  cy.getData('sign-up-submit').click();
 });

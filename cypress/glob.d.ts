@@ -11,6 +11,7 @@ declare global {
       waitForApp: () => Cypress.Chainable<unknown>;
       getData: (attribute: string) => Cypress.Chainable<JQuery<Node>>;
       signIn: (user: { email: string; password: string }) => void;
+      signUp: (user: { email: string; password: string }) => void;
     }
   }
 }
