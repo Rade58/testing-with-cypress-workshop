@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 const user = {
-  email: 'foobar@example.com',
+  email: 'person@example.com',
   password: 'mydaughtersbirthday'
 };
 
@@ -66,9 +66,8 @@ describe('Sign In (Success Mode)', () => {
   // UPPER USER WE DECLARED ON THE BEGGINING ON THE FILE
   // SHOULD BE SEEDED DATA, SO ADD THAT USER TO YOUR SEEDING LOGIC
   beforeEach(() => {
-    cy.task('reset');
+    // cy.task('reset');
     cy.task('seed');
-    cy.wait(4000);
     cy.visit('http://localhost:3000/echo-chamber/sign-in');
   });
 
