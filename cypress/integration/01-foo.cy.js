@@ -1,9 +1,12 @@
 /// <reference types="cypress" />
 
-describe('Another foo', () => {
-	it('goes to microsoft', () => {
-		cy.visit('https://microsoft.com');
-	});
+// A NO OP BECUSE EVERYTHING IN integration IS NOOP
+// USE e2e FOLDER INSTEAD
 
-	// HERE YOU GO
+describe('Another foo', () => {
+  it('goes to microsoft', () => {
+    cy.visit('https://microsoft.com');
+  });
+
+  // HERE YOU GO
 });
