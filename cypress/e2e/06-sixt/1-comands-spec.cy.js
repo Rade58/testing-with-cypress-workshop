@@ -1,0 +1,104 @@
+/// <reference types="cypress" />
+
+const user = {
+  email: 'person@example.com',
+  password: 'mydaughtersbirthday'
+};
+
+describe('Sign Up', () => {
+  // BEFORE EACHE TEST IN THIS describe BLOCK WE SHOULD RESET THE DATBASE
+  beforeEach(() => {
+    cy.task('reset');
+
+    //
+  });
+
+  it('should successfully create a user when entering an email and a password', () => {
+    // Sign Up
+
+    // INSTEAD OF THIS
+    /* cy.visit('http://localhost:3000/echo-chamber/sign-up');
+
+    cy.get('[data-test=sign-up-email]').type(user.email, { delay: 100, timeout: 100 });
+    cy.get('[data-test=sign-up-password]').type(user.password, { delay: 100, timeout: 100 });
+    cy.get('[data-test=sign-up-submit]').click(); */
+
+    // USE COMMAND WE MADE
+    cy.signUp(user);
+
+    // Sign In
+
+    // INSTEAD OF THIS
+    /* cy.visit('http://localhost:3000/echo-chamber/sign-in');
+
+    cy.get('[data-test=sign-in-email]').type(user.email, { delay: 100, timeout: 100 });
+    cy.get('[data-test=sign-in-password]').type(user.password, { delay: 100, timeout: 100 });
+    cy.get('[data-test=sign-in-submit]').click();
+     */
+    // USE THIS COMMAND WE MADE
+    cy.signIn(user);
+
+    // cy.wait(2000);
+    // ASSERTIONS
+    //
+
+    cy.location('pathname').should('contain', '/echo-chamber/posts');
+
+    cy.get('[data-test="current-user"] > .btn-ghost').click();
+
+    cy.contains(`Profile ${user.email}`);
+  });
+});
+
+describe('Sign In (Failiure Mode)', () => {
+  beforeEach(() => {
+    cy.task('reset');
+    // cy.visit('http://localhost:3000/echo-chamber/sign-in');
+  });
+
+  it('should sign in with an existing user', () => {
+    // INSTEAD OF THIS
+    // cy.get('[data-test=sign-in-email]').type(user.email, { delay: 100, timeout: 100 });
+    // cy.get('[data-test=sign-in-password]').type(user.password, { delay: 100, timeout: 100 });
+    // cy.get('[data-test=sign-in-submit]').click();
+    // USE THIS
+    cy.signIn(user);
+
+    cy.location('pathname').should('contain', '/echo-chamber/sign-in');
+    cy.get('[data-test="current-user"] > .btn-ghost').should('not.exist');
+
+    cy.contains('Error! No such user exists.');
+
+    cy.contains(`Profile ${user.email}`).should('not.exist');
+  });
+});
+
+describe('Sign In (Success Mode)', () => {
+  // HERE WE ARE GOING TO SEED DATBASE
+  // BEFORE EVERY TEST
+  // UPPER USER WE DECLARED ON THE BEGGINING ON THE FILE
+  // SHOULD BE SEEDED DATA, SO ADD THAT USER TO YOUR SEEDING LOGIC
+  beforeEach(() => {
+    // cy.task('reset');
+    cy.task('seed');
+    // cy.visit('http://localhost:3000/echo-chamber/sign-in');
+  });
+
+  it('should sign in with an existing user', () => {
+    // INSTEAD OF THIS
+    // cy.get('[data-test=sign-in-email]').type(user.email, { delay: 100, timeout: 100 });
+    // cy.get('[data-test=sign-in-password]').type(user.password, { delay: 100, timeout: 100 });
+    // cy.get('[data-test=sign-in-submit]').click();
+    // USE THIS
+    cy.signIn(user);
+
+    // cy.wait(2000);
+    // ASSERTIONS
+
+    cy.location('pathname').should('contain', '/echo-chamber/posts');
+
+    cy.get('[data-test="current-user"] > .btn-ghost').click();
+
+    cy.contains(`Profile ${user.email}`);
+  });
+});
