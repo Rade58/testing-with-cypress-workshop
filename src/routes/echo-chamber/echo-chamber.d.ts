@@ -1,15 +1,17 @@
 type UserType = {
-	id: number;
-	email: string;
+  id: number;
+  email: string;
 };
 
 type PostType = {
-	id: number;
-	content: string;
-	createdAt: string;
-	author: User;
+  id: number;
+  content: string;
+  createdAt: string;
+  author: User;
 };
 
 type FormDataPostType = {
-	content: string;
+  content: string;
 };
+
+export {};

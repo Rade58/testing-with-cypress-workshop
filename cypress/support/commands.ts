@@ -25,13 +25,36 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 //
-// declare global {
-//   namespace Cypress {
-//     interface Chainable {
-//       login(email: string, password: string): Chainable<void>
-//       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
-//     }
-//   }
-// }
+
+// MOVED THIS HERE          cypress/glob.d.ts
+/* declare global {
+  // eslint-disable-next-line
+  namespace Cypress {
+    interface Chainable {
+      // login(email: string, password: string): Chainable<void>
+      // drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
+      // dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
+      // visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
+      waitForApp: any;
+    }
+  }
+} */
+
+Cypress.Commands.add('waitForApp', () => {
+  return cy.wrap(
+    new Promise((resolve) => {
+      cy.window().then((win) => {
+        win.addEventListener('svelte:start', resolve);
+      });
+    })
+  );
+});
+
+Cypress.Commands.add('getData', (attribute: string) => {
+  return cy.get(`[data-test=${attribute}]`);
+});
+
+Cypress.Commands.add('signIn', (user: { email: string; password: string }) => {
+  cy.visit('http://localhost:3000/echo-chamber/sign-in');
+  cy.getData();
+});
