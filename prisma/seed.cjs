@@ -54,7 +54,7 @@ async function main() {
 
   const third = await prisma.user.upsert({
     where: {
-      email: 'bazqux@example.com'
+      email: 'foobar@example.com'
     },
     update: {},
     create: {
@@ -74,7 +74,7 @@ async function main() {
     }
   });
 
-  return Promise.all([first, second]);
+  return Promise.all([first, second, third]);
 }
 
 if (require.main === module) {
