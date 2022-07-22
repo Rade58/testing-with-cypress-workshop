@@ -102,7 +102,7 @@ describe('Pokemon search', () => {
     cy.intercept('/pokemon-search/api?*', { pokemons }).as('stubbed-api');
     cy.get('@search').type('hello world', {
       timeout: 200,
-      delay: 100
+      delay: 200
     });
     cy.wait('@stubbed-api');
 
@@ -136,5 +136,13 @@ describe('Pokemon search', () => {
     cy.wait('@individual-api');
 
     cy.location('pathname').should('contain', '/pokemon-search/1');
+  });
+
+  it('should imediately fetch a pokemon if a query parameter is provided', () => {
+    cy.intercept('/pokemon-search/api?*', { pokemons }).as('stubbed-api');
+
+    cy.visit({ url: 'http://localhost:3000/pokemon-search', qs: { name: 'charm' } });
+
+    cy.wait('@stubbed-api').its('response.url').should('contain', '?name=charm');
   });
 });
