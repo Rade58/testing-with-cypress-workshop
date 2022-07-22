@@ -12,6 +12,11 @@
 
 import type { Post } from '@prisma/client';
 
+type UserType = {
+  id: number;
+  email: string;
+};
+
 // THIS I ALLOWED, POPULATE THESE INTERFACS
 // TO GET TYPE SAFTY
 declare namespace App {
@@ -37,3 +42,4 @@ type CoinType = {
 };
 
 // POPULATE THIS
+//

@@ -6,7 +6,6 @@
     const error = searchParams.get("error");
 
     const {user} = session as {user: UserType}
-
     if(user){
       return {
         status: 302,
