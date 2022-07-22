@@ -85,7 +85,10 @@ describe('Pokemon search', () => {
 
   it('should link to the correct pokemon', () => {
     cy.intercept('/pokemon-search/api?*', { pokemons }).as('stubbed-api');
-    cy.get('@search').type('hello world');
+    cy.get('@search').type('hello world', {
+      delay: 200,
+      timeout: 200
+    });
     cy.wait('@stubbed-api');
 
     cy.get('[data-test="results"] a').each(($el, index) => {
