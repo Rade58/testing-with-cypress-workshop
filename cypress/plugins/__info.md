@@ -1,0 +1,5 @@
+# plugins FOLDER IS DEPRECATED I THINK
+
+I THINK, IF YOU NEED TO DEFINE PLUGINS AND TASKS; YOU SHOULD USE
+
+[cypress.config.ts](/cypress.config.ts)
