@@ -82,6 +82,7 @@ TO HAVE context OF "module" -->
     <br/>
     <!-- YES IT IS POSIBLE TO BIND TO PROP -->
     <select
+      data-test="amount-select"
       bind:value={numberOfFacts}
       id="number-of-facts"
       class="select select-info w-full max-w-xs mb-2"
