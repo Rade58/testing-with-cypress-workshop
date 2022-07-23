@@ -28,5 +28,9 @@ describe('Signing in with a mocked data', () => {
     cy.visit('http://localhost:3000/echo-chamber/posts');
   });
 
-  it('', () => {});
+  it('', () => {
+    cy.visit('http://localhost:3000/echo-chamber/posts/1');
+
+    cy.wait('@postApi');
+  });
 });
