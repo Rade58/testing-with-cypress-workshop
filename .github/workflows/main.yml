@@ -9,7 +9,7 @@ jobs:
       - name: Install modules
         run: npm ci
       - name: Cypress
-        uses: cypress-io/github-action@v2
+        uses: cypress-io/github-action@v4.1.0
         with:
           browser: chrome
           headless: true
