@@ -1,5 +1,8 @@
 /// <reference types="cypress" />
 
+// IMPORT COMMANDS JUST IN CASE
+// import "../../support/commands."
+
 const user = {
   email: 'person@example.com',
   password: 'mydaughtersbirthday'
