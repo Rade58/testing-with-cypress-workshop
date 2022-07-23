@@ -1,3 +1,5 @@
+/// <reference types="@sveltejs/kit" />
+
 type UserType = {
   id: number;
   email: string;
@@ -17,3 +19,5 @@ type FormDataPostType = {
 //
 //
 //
+
+export {};
