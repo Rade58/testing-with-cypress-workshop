@@ -2,7 +2,7 @@
 	"name": "testing-w-cypress",
 	"version": "0.0.1",
 	"scripts": {
-		"start": "npx prisma db push && DATABASE_URL=\"file:./dev.db\" npm run dev --open",
+		"start": "npx prisma db push && npm run dev --open",
 		"dev": "vite dev",
 		"build": "vite build",
 		"package": "svelte-kit package",
