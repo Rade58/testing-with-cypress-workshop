@@ -18,5 +18,6 @@ export default defineConfig({
         }
       });
     }
-  }
+  },
+  projectId: '1y2pk7'
 });
