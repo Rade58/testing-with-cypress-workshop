@@ -15,7 +15,8 @@
 
 const decodeToken = (token /* : string */) =>
   JSON.parse(Buffer.from(token, 'base64').toString('utf-8'));
-const encodeToken = (token /* : string */) => Buffer.from(JSON.stringify(token)).toString('base64');
+const encodeToken = (userData /* : {email:string; id:string} */) =>
+  Buffer.from(JSON.stringify(userData)).toString('base64');
 
 // SAME UER AS ONE WE USED IN SEEDING
 const user = {
