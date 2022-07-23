@@ -1,10 +1,29 @@
 /// <reference types="cypress" />
 
+//
+//
+//
+//
+//
+//
+//
+//
 // I STARTED DOING THIS BUT STOPPED
 // THIS TEST ISN'T COMPLETED AND IT IS NOT RELEVANT
 // SINCE I AM USING SERVER SIDE RENDERING
 // I WANTED TO USE FIXTURES FOR THE API I'M FETCHING FROM
 // BUT THESE APS AR INSIDE lod FUNCTION OF THE PAGE
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 const decodeToken = (token /* : string */) =>
   JSON.parse(Buffer.from(token, 'base64').toString('utf-8'));
