@@ -35,11 +35,11 @@ describe('Signing in with a mocked data', () => {
     cy.get('[data-test="post-preview-list"] a').as('previews');
   });
 
-  it('should render the posts from the API', () => {
+  /* it('should render the posts from the API', () => {
     cy.fixture('posts').then(({ posts }) => {
       cy.get('@previews').should('have.length', posts.length);
     });
-  });
+  }); */
 
   it('', () => {
     // cy.wait('@postsApi');
