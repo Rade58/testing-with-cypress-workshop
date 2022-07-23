@@ -24,11 +24,13 @@ describe('Signing in with a mocked data', () => {
     cy.intercept('GET', '/echo-chamber/api', { fixture: 'posts' }).as('postsApi');
     cy.intercept('GET', '/echo-chamber/api/*', { fixture: 'post' }).as('postApi');
     // cy.intercept("GET", "/echo-chamber/api", {fixture: "posts"}).as("postsApi");
-
-    cy.visit('http://localhost:3000/echo-chamber/posts');
   });
 
   it('', () => {
+    cy.visit('http://localhost:3000/echo-chamber/posts');
+
+    cy.wait('@postsApi');
+
     cy.visit('http://localhost:3000/echo-chamber/posts/1');
 
     cy.wait('@postApi');
